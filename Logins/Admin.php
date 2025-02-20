@@ -53,7 +53,7 @@
                         <img src="padlock.png" style="width: 10%; height: auto; margin-right: 4px;" alt="padlock.png">
                         <input type="password" class="form-control rounded-pill" placeholder="Enter your password">
                     </div>
-                    <a href="#" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 75%; height: 42px;">Login</a>
+                    <a href="./Admin_Interface/Dashboard_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 75%; height: 42px;">Login</a>
                 </div>
             </div>
         </div>
