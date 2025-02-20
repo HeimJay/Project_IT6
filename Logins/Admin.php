@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<!-- otin mj -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,20 +40,20 @@
         <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
 
             <div class="card" style="width: 35rem; min-height: 35rem;">
-                <img src="Vulcanizing.png" class="card-img-top mx-auto mb-0" style="width: 90%; height: auto;" alt="Vulcanizing.png">
+                <img src="../Images/Vulcanizing.png" class="card-img-top mx-auto mb-0" style="width: 90%; height: auto;" alt="Vulcanizing.png">
                 <div class="d-grid gap-0 mt-0">
                     <h1 class="card-title text-center" style="min-height: 4rem;">Login as Admin</h1>
                     <h5 class="ms-5" style="margin-left: 12px;">USERNAME</h5>
                     <div class="d-flex align-items-center mb-3" style="width: 85%; margin: 0px 12px 12px 12px">
-                        <img src="user-interface.png" style="width: 10%; height: auto; margin-right: 4px;" alt="logo.png">
+                        <img src="../Images/user-interface.png" style="width: 10%; height: auto; margin-right: 4px;" alt="logo.png">
                         <input type="text" class="form-control rounded-pill" placeholder="Enter your username">
                     </div>
                     <h5 class="ms-5" style="margin-left: 12px;">PASSWORD</h5>
                     <div class="d-flex align-items-center mb-3" style="width: 85%; margin: 0px 12px 12px 12px">
-                        <img src="padlock.png" style="width: 10%; height: auto; margin-right: 4px;" alt="padlock.png">
+                        <img src="../Images/padlock.png" style="width: 10%; height: auto; margin-right: 4px;" alt="padlock.png">
                         <input type="password" class="form-control rounded-pill" placeholder="Enter your password">
                     </div>
-                    <a href="./Admin_Interface/Dashboard_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 75%; height: 42px;">Login</a>
+                    <a href="../Admin_Interface/Dashboard_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 75%; height: 42px;">Login</a>
                 </div>
             </div>
         </div>

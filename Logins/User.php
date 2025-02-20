@@ -36,7 +36,7 @@
         <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
 
             <div class="card" style="width: 30rem; min-height: 35rem;">
-                <img src="Vulcanizing.png" class="card-img-top mx-auto mb-5" style="width: 90%; height: auto;" alt="Vulcanizing.png">
+                <img src="../Images/Vulcanizing.png" class="card-img-top mx-auto mb-5" style="width: 90%; height: auto;" alt="Vulcanizing.png">
                 <div class="d-grid gap-6 mt-3">
                     <a href="#" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center" style="width: 75%; height: 4rem;">Browse Products</a>
                     <div class="card-body text-center mt-1">
