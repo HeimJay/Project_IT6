@@ -157,7 +157,7 @@
         </div>
         <div class="main-content-div mt-3">
             <div class="dashboard-header">
-                <img src="list-items.png" class="p-1" style="width: 10%; height: auto" alt="dashboard.png">
+                <img src="../Images/list-items.png" class="p-1" style="width: 10%; height: auto" alt="dashboard.png">
                 <h1>Item List</h1>
             </div>
 

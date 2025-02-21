@@ -1,3 +1,14 @@
+<?php
+include "../Database/db_connect.php";
+
+$id = $_GET['sba'];
+$sql = "SELECT * FROM vulcanizing WHERE Supplier_ID=" . $id;
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,20 +160,20 @@
                 <h5 class="text-center" style="margin-left: 10px;">3G Tires Parts and Vulcanizing Shop</h5>
             </div>
             <!--Dashboard-->
-            <a href="Dashboard_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
+            <a href="../Admin_Interface/Dashboard_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/dashboard.png" class="p-1" style="width: 20%; height: auto" alt="dashboard.png">Dashboard</a>
-            <a href="Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
+            <a href="../Admin_Interface/Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
-            <a href="ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
+            <a href="../Admin_Interface/ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
-            <a href="Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
+            <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
             <!--Maintenance-->
             <h3 class="m-5 mb-0">Maintenance</h3>
-            <a href="ItemList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
+            <a href="../Admin_Interface/ItemList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/list-items.png" class="p-1" style="width: 20%; height: auto" alt="list-items.png">Item List</a>
-            <a href="ReturnList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
+            <a href="../Admin_Interface/ReturnList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/document.png" class="p-1" style="width: 25%; height: auto" alt="document.png">Return List</a>
 
             <!--Sign-Out-->
@@ -182,105 +193,81 @@
 
         <div class="view-content-div">
             <!-- Content goes here -->
-
             <div class="container">
+                <div class="row">
+                    <div class="col col-12">
+                        <div class="row">
+                            <div class="col " style="border-radius: 10px; height: 500px; background-color: white;">
 
-                <div class="row border r-header text-center align-items-center mb-2">
-                    <div class="col col-2">Supplier Name</div>
-                    <div class="col col-2">Item Name</div>
-                    <div class="col col-2">Category</div>
-                    <div class="col col-1">SRPrice</div>
-                    <div class="col col-1">Qty.</div>
-                    <div class="col col-2">Arrival Date:</div>
-                    <div class="col col-2"></div>
-
-
-                </div>
-                <?php
-
-                include '../Database/db_connect.php';
-                try {
-                    $sql = "SElECT * FROM vulcanizing";
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-
-                ?>
-
-
-
-                            <div class="row text-center align-items-center r-body">
-
-
-                                <div class="col col-2">
-                                    <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-                                    <strong><?php echo $row['Supplier_Name'] ?></strong>
-                                </div>
-                                <div class="col col-2">
-                                    <strong><?php echo $row['Item_Name'] ?></strong>
-
+                                <div class="row justify-content-center align-items-center" style="height: 70px;">
+                                    <div class="col col-2" style="color: white; border-radius: 10px; background-color: rgb(216, 79, 79);">
+                                        <h2 style="text-align: center; margin-top: 3px;">Add Stock</h2>
+                                    </div>
 
                                 </div>
-                                <div class="col col-2">
-                                    <span><?php echo $row['Category'] ?></span>
+
+                                <form action="../Database_Operations/editSQL.php" method="post">
+                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                    <div class="row">
+                                        <div class="col col-6 mt-3 ps-5">
+                                            <label for="sname">
+                                                <h4>Supplier Name:</h4>
+                                            </label>
+                                            <input type="text" class="form-control inputStyle" id="sname" name="sname" value="<?php echo $row['Supplier_Name']; ?>">
+                                        </div>
+                                        <div class="col col-6 mt-3 ps-5">
+                                            <label for="adate">
+                                                <h4>Arrival Date:</h4>
+                                            </label>
+                                            <input type="date" class="form-control inputStyle" id="adate" name="adate" value="<?php echo $row['Arrival_Date']; ?>">
+                                        </div>
+                                        <div class="w-100"></div>
+                                        <div class="col col-6 mt-3 ps-5">
+                                            <label for="iname">
+                                                <h4>Stock Name:</h4>
+                                            </label>
+                                            <input type="text" class="form-control inputStyle" id="iname" name="iname" value="<?php echo $row['Item_Name']; ?>">
+                                        </div>
+                                        <div class="col col-6 mt-3 ps-5">
+                                            <label for="oprice">
+                                                <h4>Original Price:</h4>
+                                            </label>
+                                            <input type="text" class="form-control inputStyle" id="oprice" name="oprice" value="<?php echo $row['SR_Price']; ?>">
+                                        </div>
+                                        <div class="w-100"></div>
+                                        <div class="col col-6 mt-3 ps-5">
+                                            <label for="category">
+                                                <h4>Category:</h4>
+                                            </label>
+                                            <input type="text" class="form-control inputStyle" id="category" name="category" value="<?php echo $row['Category']; ?>">
+                                        </div>
+                                        <div class="col col-6 mt-3 ps-5">
+                                            <label for="qty">
+                                                <h4>Quantity:</h4>
+                                            </label>
+                                            <input type="text" class="form-control inputStyle" id="qty" name="qty" value="<?php echo $row['Quantity']; ?>">
+                                        </div>
+                                        <div class="w-100"></div>
+                                        <div class="col"></div>
+                                    </div>
+                                    <button class="btn btn-danger rounded-pill" type="submit">Save</button>
+                                </form>
 
 
-                                </div>
-                                <div class="col col-1">
-                                    <span><?php echo '₱ ' . $row['SR_Price'] ?></span>
 
-
-                                </div>
-                                <div class="col col-1">
-                                    <span><?php echo $row['Quantity'] ?></span>
-
-
-                                </div>
-                                <div class="col col-2">
-                                    <span><?php echo $row['Arrival_Date'] ?></span>
-
-
-                                </div>
-                                <div class="col col-2 d-flex justify-content-betwenn">
-
-                                    <form action="../Operations/Edit.php" method="get">
-                                        <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-
-                                        <button type="submit" class="btn"><i class="btn btn-outline-success bi bi-pencil-square"></i>EDIT</button>
-
-
-                                    </form>
-
-
-                                    <form action="../Database_Operations/deleteSQL.php" method="post">
-                                        <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-
-                                        <button type="submit" class="btn"><i class="btn btn-outline-danger bi bi-trash"></i>DELETE</button>
-
-
-                                    </form>
-
-
-                                </div>
-                                <div class="w-100"></div>
 
 
                             </div>
-                <?php
-                        }
-                    }
-
-                    $conn->close();
-                } catch (\Exception $e) {
-                    die($e);
-                }
-                ?>
-
-
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 </body>
 
 </html>
