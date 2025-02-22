@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard | Stocks</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <style>
         @font-face {
             font-family: 'Aileron';
@@ -193,8 +194,6 @@
                     <div class="col col-1">Qty.</div>
                     <div class="col col-2">Arrival Date:</div>
                     <div class="col col-2"></div>
-
-
                 </div>
                 <?php
 
@@ -208,64 +207,37 @@
 
                 ?>
 
-
-
                             <div class="row text-center align-items-center r-body">
-
-
                                 <div class="col col-2">
                                     <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
                                     <strong><?php echo $row['Supplier_Name'] ?></strong>
                                 </div>
                                 <div class="col col-2">
                                     <strong><?php echo $row['Item_Name'] ?></strong>
-
-
                                 </div>
                                 <div class="col col-2">
                                     <span><?php echo $row['Category'] ?></span>
-
-
                                 </div>
                                 <div class="col col-1">
                                     <span><?php echo '₱ ' . $row['SR_Price'] ?></span>
-
-
                                 </div>
                                 <div class="col col-1">
                                     <span><?php echo $row['Quantity'] ?></span>
-
-
                                 </div>
                                 <div class="col col-2">
                                     <span><?php echo $row['Arrival_Date'] ?></span>
-
-
                                 </div>
-                                <div class="col col-2 d-flex justify-content-betwenn">
-
+                                <div class="col col-2 d-flex justify-content-between">
                                     <form action="../Operations/Edit.php" method="get">
                                         <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-
-                                        <button type="submit" class="btn"><i class="btn btn-outline-success bi bi-pencil-square"></i>EDIT</button>
-
-
+                                        <button type="submit" class="btn btn-outline-success"><i class="bi bi-pencil-square"></i> EDIT</button>
                                     </form>
-
-
                                     <form action="../Database_Operations/deleteSQL.php" method="post">
                                         <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-
-                                        <button type="submit" class="btn"><i class="btn btn-outline-danger bi bi-trash"></i>DELETE</button>
-
-
+                                        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash"></i> DELETE</button>
                                     </form>
-
-
                                 </div>
                                 <div class="w-100"></div>
-
-
                             </div>
                 <?php
                         }
@@ -276,11 +248,10 @@
                     die($e);
                 }
                 ?>
-
-
             </div>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 </body>
 
 </html>
