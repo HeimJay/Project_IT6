@@ -65,7 +65,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            background-color: rgb(160, 157, 157);
+            background-color: rgb(211, 206, 206);
             margin-top: 5 auto;
             margin: 0 auto;
             border-radius: 10px;

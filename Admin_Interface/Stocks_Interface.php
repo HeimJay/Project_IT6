@@ -66,7 +66,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            background-color: rgb(160, 157, 157);
+            background-color: rgb(211, 206, 206);
             margin-top: 5 auto;
             margin: 0 auto;
             border-radius: 10px;
@@ -227,14 +227,14 @@
                                 <div class="col col-2">
                                     <span><?php echo $row['Arrival_Date'] ?></span>
                                 </div>
-                                <div class="col col-2 d-flex justify-content-between">
+                                <div class="col col-2 d-flex justify-content-between btn-group">
                                     <form action="../Operations/Edit.php" method="get">
                                         <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-                                        <button type="submit" class="btn btn-outline-success"><i class="bi bi-pencil-square"></i> EDIT</button>
+                                        <button type="submit" class="btn btn-outline-success m-2"><i class="bi bi-pencil-square"></i> </button>
                                     </form>
                                     <form action="../Database_Operations/deleteSQL.php" method="post">
                                         <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-                                        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash"></i> DELETE</button>
+                                        <button type="submit" class="btn btn-outline-danger m-2"><i class="bi bi-trash"></i> </button>
                                     </form>
                                 </div>
                                 <div class="w-100"></div>

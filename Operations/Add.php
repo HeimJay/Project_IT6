@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard | Stocks</title>
+    <title>Admin Dashboard | Add Stock</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         @font-face {
@@ -65,7 +65,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            background-color: rgb(160, 157, 157);
+            background-color: rgb(211, 206, 206);
             margin-top: 5 auto;
             margin: 0 auto;
             border-radius: 10px;
@@ -114,14 +114,10 @@
         }
 
         .form-control {
-            border: 2px solid black;
+            border: 2px solid red;
         }
 
-        h5 {
-            font-weight: bold;
-            color: white;
-        }
-
+        h5,
         h3 {
             font-weight: bold;
             color: white;
@@ -137,6 +133,40 @@
             color: white;
             margin-left: 10px;
             margin-bottom: 0px;
+        }
+
+        .add {
+            display: flex;
+            position: absolute;
+            text-align: center;
+            justify-content: center;
+            right: 21px;
+            top: 425px;
+            width: 44%;
+            border-radius: 5px;
+            border-color: rgb(216, 79, 79);
+        }
+
+        .cancel {
+            display: flex;
+            position: absolute;
+            text-align: center;
+            justify-content: center;
+            left: 56px;
+            top: 425px;
+            width: 44%;
+            height: 40px;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+        }
+
+        .cancel:hover,
+        .cancel:focus {
+            color: red;
+            background-color: white;
+            border-color: black;
         }
     </style>
 </head>
@@ -201,50 +231,47 @@
                                             <label for="sname">
                                                 <h4>Supplier Name:</h4>
                                             </label>
-                                            <input type="text" class="form-control inputStyle" id="sname" name="sname">
+                                            <input type="text" class="form-control" id="sname" name="sname">
                                         </div>
                                         <div class="col col-6 mt-3 ps-5">
                                             <label for="adate">
                                                 <h4>Arrival Date:</h4>
                                             </label>
-                                            <input type="date" class="form-control inputStyle" id="adate" name="adate">
+                                            <input type="date" class="form-control" id="adate" name="adate">
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col col-6 mt-3 ps-5">
                                             <label for="iname">
                                                 <h4>Stock Name:</h4>
                                             </label>
-                                            <input type="text" class="form-control inputStyle" id="iname" name="iname">
+                                            <input type="text" class="form-control" id="iname" name="iname">
                                         </div>
                                         <div class="col col-6 mt-3 ps-5">
                                             <label for="oprice">
                                                 <h4>Original Price:</h4>
                                             </label>
-                                            <input type="text" class="form-control inputStyle" id="oprice" name="oprice">
+                                            <input type="text" class="form-control" id="oprice" name="oprice">
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col col-6 mt-3 ps-5">
                                             <label for="category">
                                                 <h4>Category:</h4>
                                             </label>
-                                            <input type="text" class="form-control inputStyle" id="category" name="category">
+                                            <input type="text" class="form-control" id="category" name="category">
                                         </div>
                                         <div class="col col-6 mt-3 ps-5">
                                             <label for="qty">
                                                 <h4>Quantity:</h4>
                                             </label>
-                                            <input type="text" class="form-control inputStyle" id="qty" name="qty">
+                                            <input type="text" class="form-control" id="qty" name="qty">
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col"></div>
                                     </div>
-                                    <button class="btn btn-danger rounded-pill" type="submit">Add</button>
+                                    <button class="add btn-danger" type="submit">Add</button>
+                                    <a href="../Admin_Interface/Stocks_Interface.php" class="cancel btn-dark fs-4">Cancel</a>
 
                                 </form>
-
-
-
-
 
                             </div>
                         </div>
@@ -252,9 +279,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 </body>

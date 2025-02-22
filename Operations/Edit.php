@@ -76,7 +76,7 @@ $row = $result->fetch_assoc();
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            background-color: rgb(160, 157, 157);
+            background-color: rgb(211, 206, 206);
             margin-top: 5 auto;
             margin: 0 auto;
             border-radius: 10px;
@@ -148,6 +148,41 @@ $row = $result->fetch_assoc();
             color: white;
             margin-left: 10px;
             margin-bottom: 0px;
+        }
+
+        .save {
+            display: flex;
+            position: absolute;
+            text-align: center;
+            justify-content: center;
+            right: 21px;
+            top: 425px;
+            width: 44%;
+            border-radius: 5px;
+            border-color: rgb(216, 79, 79);
+        }
+
+        .cancel {
+            display: flex;
+            position: absolute;
+            text-align: center;
+            justify-content: center;
+            left: 56px;
+            top: 425px;
+            width: 44%;
+            height: 40px;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+        }
+
+        .cancel:hover,
+        .cancel:focus {
+            text-decoration: none;
+            color: red;
+            background-color: white;
+            border-color: black;
         }
     </style>
 </head>
@@ -250,7 +285,9 @@ $row = $result->fetch_assoc();
                                         <div class="w-100"></div>
                                         <div class="col"></div>
                                     </div>
-                                    <button class="btn btn-danger rounded-pill" type="submit">Save</button>
+                                    <button class="save btn-danger" type="submit">Save Changes</button>
+                                    <a href="../Admin_Interface/Stocks_Interface.php" class="cancel btn-dark fs-4">Cancel</a>
+
                                 </form>
 
 
