@@ -62,7 +62,6 @@
             left: 345px;
             width: 75%;
             height: 75%;
-            display: flex;
             
             background-color: rgb(211, 206, 206);
             margin-top: 5 auto;
@@ -161,69 +160,53 @@
                 <h1>Suppliers</h1>
             </div>
 
+            
 
         </div>
         <div class="view-content-div">
-            
-            <div class="row w-100" style="height: 50px;">
-                <!-- HEADER -->
-                <div class="col col-12">
+
+            <div class="row w-100 justify-content-center" style="height: 50px;">
+                <div class="col col-8 text-center">
+                    <h1>Add New Supplier:</h1>
+                </div>
+            </div>
+            <div class="row w-100 justify-content-center align-items-center" style="height: 450px;">
+                <div class="col col-8">
                     
-                    <div class="row w-100 justify-content-end">
-                        <div class="col col-2">
-                            <a href="../Operations/do_addSuppliers.php" class="btn btn-danger">Add Supplier</a>
+                    <form action="execute_addSuppliers.php" method="POST">
+                        <div class="row ">
+                            <div class="col">
+                                <label for="sfname"><h4>First Name:</h4></label>
+                                <input type="text" name="sfname" id="sfname" class="form-control" required>
+                            </div>
+                            <div class="col">
+                                <label for="slname"><h4>Last Name:</h4></label>
+                                <input type="text" name="slname" id="slname" class="form-control" required>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col mt-2">
+                            <label for="cname"><h4>Company:</h4></label>
+                            <input type="text" name="cname" id="cname" class="form-control" required>
+                            </div>
+                        
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-col-12">
+                                <button type="submit" class="btn btn-primary w-100">Add Supplier</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <div class="row mt-3">
+                        <div class="col-col-12">
+                            <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-outline-primary w-100">Cancel</a>
                         </div>
                     </div>
-
-                </div>
-
-
-
-                <!-- BODY -->
-                <div class="col col-12" style="overflow: auto;">
-
-                    <?php
-                        include "../Database/db_connect.php";
-
-                        try{
-
-                            $sql = "SELECT * FROM suppliers";
-                            $result = $conn->query($sql);
-
-                            if($result->num_rows >0){
-                                while($rows = $result->fetch_assoc()){            
-                    
-                    ?>
-
-                        <div class="row border mt-2 py-2" style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
-                            <div class="col col-9">
-                                <Strong>Name: </Strong>
-                                <span><?php echo $rows['supplier_name'] ?></span> <br>
-                                <strong>Company: </strong>
-                                <span><?php echo $rows['company_name'] ?></span>
-                            </div>
-                            <div class="col col-3">
-                                <a href="#" >EDIT</a>
-                                <a href="#">DELETE</a>
-                            </div>
-                        </div>
-
-                    <?php
-                                }
-                            }
-
-                        } catch(\Exception $e){
-                            die($e);
-                        }
-                    ?>
 
 
                 </div>
             </div>
-            
-
-            
-            
 
         </div>
 
