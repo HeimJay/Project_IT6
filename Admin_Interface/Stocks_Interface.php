@@ -64,13 +64,13 @@
             width: 75%;
             height: 75%;
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
+
             background-color: rgb(211, 206, 206);
             margin-top: 5 auto;
             margin: 0 auto;
             border-radius: 10px;
-            padding: 10px;
+            padding-left: 22px;
+            padding-top: 10px;
         }
 
         .add-button {
@@ -177,78 +177,112 @@
             </div>
         </div>
 
-        <a href="../Operations/Add.php" class="btn btn-danger rounded-pill add-button fs-3">
+        <a href="../Operations/do_addStock.php" class="btn btn-danger rounded-pill add-button fs-3">
             <img src="../Images/add.png" style="width: 20%; height: auto" alt="add.png">Add</a>
 
 
         <div class="view-content-div">
             <!-- Content goes here -->
 
-            <div class="container">
+            <div class="row  w-100" style="height: 490px;">
+                
+                <div class="col col-12">
+                    <!--HEADER-->
+                    <div class="row  text-center align-items-center" style="background-color:rgb(216, 79, 79); border-radius:10px; color: white; height:70px;">
+                        <div class="col col-2">
+                            <h4>Item Name:</h4>
+                        </div>
+                        <div class="col col-2">
+                            <h4>SR Price:</h4>
+                        </div>
+                        <div class="col col-1">
+                            <h4>In Stock:</h4>
+                        </div>
+                        <div class="col col-1">
+                            <h4>Price:</h4>
+                        </div>
+                        <div class="col col-2">
+                            <h4>Arrival Date:</h4>
+                        </div>
+                        <div class="col col-2">
+                            <h4>Supplier:</h4>
+                        </div>
+                        <div class="col col-2">
+                            <h4>Company:</h4>
+                        </div>
+                    </div>
 
-                <div class="row border r-header text-center align-items-center mb-2">
-                    <div class="col col-2">Supplier Name</div>
-                    <div class="col col-2">Item Name</div>
-                    <div class="col col-2">Category</div>
-                    <div class="col col-1">SRPrice</div>
-                    <div class="col col-1">Qty.</div>
-                    <div class="col col-2">Arrival Date:</div>
-                    <div class="col col-2"></div>
+
                 </div>
-                <?php
 
-                include '../Database/db_connect.php';
-                try {
-                    $sql = "SElECT * FROM vulcanizing";
-                    $result = $conn->query($sql);
+                
+                <div class="col col-12">
+                    
+                    <!--BODY-->
+                    <div class="row " style="height: 400px;">
+                        <div class="col col-12">
 
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
+                            <?php
+                                include "../Database/db_connect.php";
 
-                ?>
+                                try{
+                                    $sql = "SELECT * FROM stocks_view";
+                                    $do = $conn->query($sql);
 
-                            <div class="row text-center align-items-center r-body">
-                                <div class="col col-2">
-                                    <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-                                    <strong><?php echo $row['Supplier_Name'] ?></strong>
-                                </div>
-                                <div class="col col-2">
-                                    <strong><?php echo $row['Item_Name'] ?></strong>
-                                </div>
-                                <div class="col col-2">
-                                    <span><?php echo $row['Category'] ?></span>
-                                </div>
-                                <div class="col col-1">
-                                    <span><?php echo '₱ ' . $row['SR_Price'] ?></span>
-                                </div>
-                                <div class="col col-1">
-                                    <span><?php echo $row['Quantity'] ?></span>
-                                </div>
-                                <div class="col col-2">
-                                    <span><?php echo $row['Arrival_Date'] ?></span>
-                                </div>
-                                <div class="col col-2 d-flex justify-content-between btn-group">
-                                    <form action="../Operations/Edit.php" method="get">
-                                        <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-                                        <button type="submit" class="btn btn-outline-success m-2"><i class="bi bi-pencil-square"></i> </button>
-                                    </form>
-                                    <form action="../Database_Operations/deleteSQL.php" method="post">
-                                        <input type="text" hidden value="<?php echo $row['Supplier_ID'] ?>" name="sba">
-                                        <button type="submit" class="btn btn-outline-danger m-2"><i class="bi bi-trash"></i> </button>
-                                    </form>
-                                </div>
-                                <div class="w-100"></div>
-                            </div>
-                <?php
-                        }
-                    }
+                                    if($do->num_rows > 0){
+                                        while($rows = $do->fetch_assoc()){
 
-                    $conn->close();
-                } catch (\Exception $e) {
-                    die($e);
-                }
-                ?>
+
+                            ?>
+
+                                <div class="row text-center align-items-center mt-2" style="height:50px; background-color:rgb(216, 79, 79); border-radius: 10px; color:white; overflow:auto;">
+                                    <div class="col col-2">
+                                        <span><?php echo $rows['item_name'] ?></span>
+                                    </div>
+                                    <div class="col col-2">
+                                        <span><?php echo $rows['original_price'] ?></span>
+                                    </div>
+                                    <div class="col col-1">
+                                        <span><?php echo $rows['stock_quantity'] ?></span>
+                                    </div>
+                                    <div class="col col-1">
+                                        <span><?php echo $rows['selling_price'] ?></span>
+                                    </div> 
+                                    <div class="col col-2">
+                                        <span><?php echo $rows['arrival_date'] ?></span>
+                                    </div>
+                                    <div class="col col-2">
+                                        <span><?php echo $rows['supplier_name'] ?></span>
+                                    </div>
+                                    <div class="col col-2">
+                                        <span><?php echo $rows['company_name'] ?></span>
+                                    </div>
+                                </div>
+
+
+                            <?php
+                            
+                                        }
+                                    }
+
+                                }catch(\Exception $e){
+                                    die($e);
+                                }
+                            
+                            ?>
+
+
+                        </div>
+                    </div>
+                
+
+
+                </div>
+
+
             </div>
+
+           
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>

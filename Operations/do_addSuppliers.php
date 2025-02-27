@@ -173,7 +173,7 @@
             <div class="row w-100 justify-content-center align-items-center" style="height: 450px;">
                 <div class="col col-8">
                     
-                    <form action="execute_addSuppliers.php" method="POST">
+                    <form action="../Database_Operations/execute_addSuppliers.php" method="POST">
                         <div class="row ">
                             <div class="col">
                                 <label for="sfname"><h4>First Name:</h4></label>

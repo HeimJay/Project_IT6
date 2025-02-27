@@ -206,8 +206,7 @@
             </div>
         </div>
 
-        <a href="../Admin_Interface/Operations/Add.php" class="btn btn-danger rounded-pill add-button fs-3">
-            <img src="../Images/add.png" style="width: 20%; height: auto" alt="add.png">Add</a>
+        
 
 
         <div class="view-content-div">
@@ -218,55 +217,83 @@
                         <div class="row">
                             <div class="col " style="border-radius: 10px; height: 500px; background-color: white;">
 
-                                <div class="row justify-content-center align-items-center" style="height: 70px;">
+                                <div class="row justify-content-center align-items-center mb-5" style="height: 70px;">
                                     <div class="col col-2" style="color: white; border-radius: 10px; background-color: rgb(216, 79, 79);">
                                         <h2 style="text-align: center; margin-top: 3px;">Add Stock</h2>
                                     </div>
 
                                 </div>
 
-                                <form action="../Database_Operations/addSQL.php" method="post">
+                                <form action="../Database_Operations/execute_addStock.php" method="post">
                                     <div class="row">
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="sname">
-                                                <h4>Supplier Name:</h4>
-                                            </label>
-                                            <input type="text" class="form-control" id="sname" name="sname">
+
+                                        <div class="col col-3 mt-3">
+                                        
+                                            <label for="selected_supplier"><h4>Supplier ID:</h4></label>
+                                            
+                                            <select name="selected_supplier" id="selected_supplier" class="form-select">
+
+                                                <option value="">None</option>
+                                                <?php
+                                                    include "../Database/db_connect.php";
+                                                    $sql = "SELECT * FROM suppliers";
+                                                    $do = $conn->query($sql);
+                                                    while($row = $do->fetch_assoc()){
+                                                        echo '<option value="' . $row['supplier_ID'] . '"> '. $row['supplier_name'] . ' </option>';
+                                                    }
+                                                ?>
+
+                                            </select>
                                         </div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="adate">
-                                                <h4>Arrival Date:</h4>
-                                            </label>
-                                            <input type="date" class="form-control" id="adate" name="adate">
+
+                                        <div class="col col-3 mt-3">
+                                        
+                                            <label for="selected_employee"><h4>Employee ID:</h4></label>
+                                            
+                                            <select name="selected_employee" id="selected_employee" class="form-select">
+
+                                                <option value="">None</option>
+                                                <?php
+                                                    include "../Database/db_connect.php";
+                                                    $sql = "SELECT * FROM employees";
+                                                    $do = $conn->query($sql);
+                                                    while($row = $do->fetch_assoc()){
+                                                        echo '<option value="' . $row['employee_ID'] . '"> '. $row['employee_name'] . ' </option>';
+                                                    }
+                                                ?>
+
+                                            </select>
                                         </div>
+
+                                        <div class="col col-6 mt-3">
+                                            <label for="iname"><h4>Item Name:</h4></label> <br>
+                                            <input type="text" name="iname" id="iname" class="form-control" required>
+                                        </div>
+
                                         <div class="w-100"></div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="iname">
-                                                <h4>Stock Name:</h4>
-                                            </label>
-                                            <input type="text" class="form-control" id="iname" name="iname">
+
+                                        <div class="col col-3 mt-3">
+                                            <label for="aqty"><h4>Arrived Quantity:</h4></label> <br>
+                                            <input type="text" name="aqty" id="aqty" class="form-control" required>
                                         </div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="oprice">
-                                                <h4>Original Price:</h4>
-                                            </label>
-                                            <input type="text" class="form-control" id="oprice" name="oprice">
+
+                                        <div class="col col-3 mt-3">
+                                            <label for="category"><h4>Category:</h4></label> <br>
+                                            <input type="text" name="category" id="category" class="form-control" required>
                                         </div>
-                                        <div class="w-100"></div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="category">
-                                                <h4>Category:</h4>
-                                            </label>
-                                            <input type="text" class="form-control" id="category" name="category">
+
+                                        <div class="col col-3 mt-3">
+                                            <label for="sprice"><h4>SR Price:</h4></label> <br>
+                                            <input type="text" name="sprice" id="sprice" class="form-control" required>
                                         </div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="qty">
-                                                <h4>Quantity:</h4>
-                                            </label>
-                                            <input type="text" class="form-control" id="qty" name="qty">
+
+                                        <div class="col col-3 mt-3">
+                                            <label for="date"><h4>Date:</h4></label> <br>
+                                            <input type="date" name="date" id="date" class="form-control" required>
                                         </div>
-                                        <div class="w-100"></div>
-                                        <div class="col"></div>
+
+
+                                        
                                     </div>
                                     <button class="add btn-danger" type="submit">Add</button>
                                     <a href="../Admin_Interface/Stocks_Interface.php" class="cancel btn-dark fs-4">Cancel</a>
