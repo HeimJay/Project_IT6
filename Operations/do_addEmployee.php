@@ -40,7 +40,6 @@
                     <img src="../Images/logout.png" style="width: 20%; height: auto" alt="logout.png">Sign Out
                 </button>
             </form>
-            
         </div>
         <div class="main-content-div mt-3">
             <div class="dashboard-header">
@@ -61,33 +60,52 @@
                             <div class="col " style="border-radius: 10px; height: 500px; background-color: white;">
 
                                 <div class="row justify-content-center align-items-center mb-5" style="height: 70px;">
-                                    <div class="col col-2" style="color: white; border-radius: 10px; background-color: rgb(216, 79, 79);">
-                                        <h2 style="text-align: center; margin-top: 3px;">Stock In</h2>
+                                    <div class="col col-3" style="color: white; border-radius: 10px; background-color: rgb(216, 79, 79);">
+                                        <h2 style="text-align: center; margin-top: 3px;">Add Employee</h2>
                                     </div>
 
                                 </div>
 
-                                <form action="../Database_Operations/execute_stock.php" method="post"> 
+                                <form action="../Database_Operations/execute_employees.php" method="post">
                                     <div class="row">
 
-                                        <div class="col col-3 mt-3">
-                                            <label for="iname"><h4>Item Name:</h4></label> <br>
-                                            <input type="text" name="iname" id="iname" class="form-control" required>
+                                        <div class="col col-4 mt-2">
+                                            <label for="eFname"><h4>First Name:</h4></label> <br>
+                                            <input type="text" name="eFname" id="eFname" class="form-control" required>
+                                        </div>
+                                        <div class="col col-4 mt-2">
+                                            <label for="eLname"><h4>Last Name:</h4></label> <br>
+                                            <input type="text" name="eLname" id="eLname" class="form-control" required>
+                                        </div>
+                                        <div class="col col-4 mt-2">
+                                            <label for="eAddress"><h4>Address:</h4></label> <br>
+                                            <input type="text" name="eAddress" id="eAddress" class="form-control" required>
                                         </div>
 
-                                        <div class="col col-3 mt-3">
-                                            <label for="category"><h4>Category:</h4></label> <br>
-                                            <input type="text" name="category" id="category" class="form-control" required>
+
+                                        <div class="col mt-4">
+                                            <label for="eContact"><h4>Contact #:</h4></label> <br>
+                                            <input type="text" name="eContact" id="eContact" class="form-control" required>
+                                        </div>
+                                        <div class="col mt-4">
+                                            <label for="ePosition"><h4>Position:</h4></label> <br>
+                                            <input type="text" name="ePosition" id="ePosition" class="form-control" required>
                                         </div>
 
-                                        <div class="col col-3 mt-3">
-                                            <label for="price"><h4>Price:</h4></label> <br>
-                                            <input type="text" name="price" id="price" class="form-control" required>
+                                        <div class="col mt-4">
+                                            <label for="eUname"><h4>Username:</h4></label> <br>
+                                            <input type="text" name="eUname" id="eUname" class="form-control" required>
                                         </div>
+                                        <div class="col mt-4">
+                                            <label for="ePass"><h4>Password:</h4></label> <br>
+                                            <input type="text" name="ePass" id="ePass" class="form-control" required>
+                                        </div>
+
+                                        
                                         
                                     </div>
-                                    <button class="add btn-danger" type="submit" name="addStockBTN">Add</button>
-                                    <a href="../Admin_Interface/Stocks_Interface.php" class="cancel btn-dark fs-4">Cancel</a>
+                                    <button class="add btn-danger" name="addEmpBTN" type="submit">Add</button>
+                                    <a href="../Admin_Interface/ItemList_Interface.php" class="cancel btn-dark fs-4">Cancel</a>
 
                                 </form>
 

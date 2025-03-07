@@ -1,3 +1,8 @@
+<?php
+    include "../Database/header.html";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,57 +10,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard | Stocks</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style_adminInterface.css">
+
     <style>
-        @font-face {
-            font-family: 'Aileron';
-            src: url('path/to/aileron-regular.woff2') format('woff2'),
-                url('path/to/aileron-regular.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            font-family: 'Aileron', sans-serif;
-            margin: 0;
-            height: 100vh;
-        }
-
-        .full-page-div {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            display: flex;
-        }
-
-        .side-page-div {
-            position: absolute;
-            width: 20%;
-            height: 100%;
-            background-color: rgb(216, 79, 79);
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        .main-content-div {
-            position: absolute;
-            left: 345px;
-            width: 75%;
-            height: 11%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: rgb(216, 79, 79);
-            margin-top: 3 auto;
-            margin: 0 auto;
-            border-radius: 10px;
-            padding: 10px;
-        }
 
         .view-content-div {
             position: absolute;
@@ -73,72 +30,20 @@
             padding-top: 10px;
         }
 
-        .add-button {
+        .function-buttons {
             position: absolute;
             right: 40px;
             top: 103px;
-            width: 10%;
+            width: 500px;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgb(216, 79, 79);
+            
             border-radius: 10px;
             padding: 1px;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .btn-danger {
-            font-family: 'Aileron', sans-serif;
-            font-size: 23px;
-            border: 2px solid black;
-            color: white;
-            background-color: rgb(216, 79, 79);
-        }
-
-        .btn-danger:hover,
-        .btn-danger:focus {
-            color: black;
-            background-color: white;
-            border-color: black;
-        }
-
-        .btn-dark:hover,
-        .btn-dark:focus {
-            color: red;
-            background-color: white;
-            border-color: black;
-        }
-
-        .form-control {
-            border: 2px solid black;
-        }
-
-        h5 {
-            font-weight: bold;
-            color: white;
-        }
-
-        h3 {
-            font-weight: bold;
-            color: white;
-        }
-
-        .dashboard-header {
-            display: flex;
-            align-items: center;
-        }
-
-        .dashboard-header h1 {
-            font-weight: bold;
-            color: white;
-            margin-left: 10px;
-            margin-bottom: 0px;
-        }
     </style>
 </head>
 
@@ -162,13 +67,16 @@
             <!--Maintenance-->
             <h3 class="m-5 mb-0">Maintenance</h3>
             <a href="ItemList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/list-items.png" class="p-1" style="width: 20%; height: auto" alt="list-items.png">Item List</a>
+                <img src="../Images/list-items.png" class="p-1" style="width: 20%; height: auto" alt="list-items.png">Employees</a>
             <a href="ReturnList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/document.png" class="p-1" style="width: 25%; height: auto" alt="document.png">Return List</a>
 
             <!--Sign-Out-->
-            <a href="../Logins/User.php" class="btn btn-dark rounded-pill mx-auto d-flex align-items-center justify-content-center mt-5" style="width: 65%; height: 42px;">
-                <img src="../Images/logout.png" style="width: 20%; height: auto" alt="logout.png">Sign Out</a>
+            <form action="../User_Interface/function.php" method="post">
+                <button type="submit" name="signoutBTN" class="btn btn-dark rounded-pill mx-auto d-flex align-items-center justify-content-center mt-5" style="width: 65%; height: 42px;">
+                    <img src="../Images/logout.png" style="width: 20%; height: auto" alt="logout.png">Sign Out
+                </button>
+            </form>
         </div>
         <div class="main-content-div mt-3">
             <div class="dashboard-header">
@@ -177,8 +85,20 @@
             </div>
         </div>
 
-        <a href="../Operations/do_addStock.php" class="btn btn-danger rounded-pill add-button fs-3">
-            <img src="../Images/add.png" style="width: 20%; height: auto" alt="add.png">Add</a>
+        <!-- FUNCTION TOOLS -->
+
+        <div class="row border justify-content-around align-items-center text-center function-buttons" style="height: 50px;">
+            <div class="col col-5 p-0 m-0" style="background-color: rgb(216, 79, 79); height:40px; border-radius:5px;">
+                <a href="../Operations/do_stockIn.php" class="btn btn-danger" style="height: 40px; width:210px;">Stock In</a>
+            </div>
+            <div class="col col-5 p-0 m-0" style="background-color: rgb(216, 79, 79); height:40px; border-radius:10px;">
+                <a href="../Operations/do_addStock.php" class="btn btn-danger" style="height: 40px; width:210px;">Add Stock</a>
+            </div>
+        </div>
+
+       
+
+        
 
 
         <div class="view-content-div">
@@ -188,27 +108,25 @@
                 
                 <div class="col col-12">
                     <!--HEADER-->
-                    <div class="row  text-center align-items-center" style="background-color:rgb(216, 79, 79); border-radius:10px; color: white; height:70px;">
+                    <div class="row text-center align-items-center" style="background-color:rgb(216, 79, 79); border-radius:10px; color: white; height:70px;">
                         <div class="col col-2">
                             <h4>Item Name:</h4>
                         </div>
                         <div class="col col-2">
-                            <h4>SR Price:</h4>
+                            <h4>Category:</h4>
                         </div>
-                        <div class="col col-1">
-                            <h4>In Stock:</h4>
+                        <div class="col col-2">
+                            <h4>Unit Price:</h4>
                         </div>
-                        <div class="col col-1">
+                        <div class="col col-2">
                             <h4>Price:</h4>
                         </div>
                         <div class="col col-2">
-                            <h4>Arrival Date:</h4>
+                            <h4>In Stock:</h4>
                         </div>
+                        
                         <div class="col col-2">
-                            <h4>Supplier:</h4>
-                        </div>
-                        <div class="col col-2">
-                            <h4>Company:</h4>
+                            <h4>Action:</h4>
                         </div>
                     </div>
 
@@ -219,14 +137,14 @@
                 <div class="col col-12">
                     
                     <!--BODY-->
-                    <div class="row " style="height: 400px;">
+                    <div class="row " style="height: 400px; overflow:auto;">
                         <div class="col col-12">
 
                             <?php
                                 include "../Database/db_connect.php";
 
                                 try{
-                                    $sql = "SELECT * FROM stocks_view";
+                                    $sql = "SELECT * FROM stocks";
                                     $do = $conn->query($sql);
 
                                     if($do->num_rows > 0){
@@ -235,29 +153,31 @@
 
                             ?>
 
-                                <div class="row text-center align-items-center mt-2" style="height:50px; background-color:rgb(216, 79, 79); border-radius: 10px; color:white; overflow:auto;">
-                                    <div class="col col-2">
-                                        <span><?php echo $rows['item_name'] ?></span>
+                                <form action="../Operations/do_edit_stock.php" method="get">
+                                    <div class="row text-center align-items-center mt-2" style="height:50px; background-color:rgb(216, 79, 79); border-radius: 10px; color:white; ">
+                                        <div class="col col-2">
+                                            <span><?php echo $rows['item_name'] ?></span>
+                                        </div>
+                                        <div class="col col-2">
+                                            <span><?php echo $rows['category'] ?></span>
+                                        </div>
+                                        <div class="col col-2">
+                                            <span><?php echo $rows['price'] ?></span>
+                                        </div>
+                                        <div class="col col-2">
+                                            <span><?php echo $rows['selling_price'] ?></span>
+                                        </div>
+                                        <div class="col col-2">
+                                            <span><?php echo $rows['stock_quantity'] ?></span>
+                                        </div>
+
+                                        <div class="col col-2">
+                                            <input type="text" hidden name="id" value="<?php echo $rows['stock_ID'] ?>">
+                                            <button type="submit" class="btn btn-success" style="width: 45px; height: 45px;"><i class="bi bi-pencil-square"></i></button>
+                                            
+                                        </div>
                                     </div>
-                                    <div class="col col-2">
-                                        <span><?php echo $rows['original_price'] ?></span>
-                                    </div>
-                                    <div class="col col-1">
-                                        <span><?php echo $rows['stock_quantity'] ?></span>
-                                    </div>
-                                    <div class="col col-1">
-                                        <span><?php echo $rows['selling_price'] ?></span>
-                                    </div> 
-                                    <div class="col col-2">
-                                        <span><?php echo $rows['arrival_date'] ?></span>
-                                    </div>
-                                    <div class="col col-2">
-                                        <span><?php echo $rows['supplier_name'] ?></span>
-                                    </div>
-                                    <div class="col col-2">
-                                        <span><?php echo $rows['company_name'] ?></span>
-                                    </div>
-                                </div>
+                                </form>
 
 
                             <?php

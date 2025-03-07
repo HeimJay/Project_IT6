@@ -1,3 +1,7 @@
+<?php
+    include "../Database/header.html";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard | Suppliers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <style>
         @font-face {
             font-family: 'Aileron';
@@ -147,13 +151,16 @@
             <!--Maintenance-->
             <h3 class="m-5 mb-0">Maintenance</h3>
             <a href="ItemList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/list-items.png" class="p-1" style="width: 20%; height: auto" alt="list-items.png">Item List</a>
+                <img src="../Images/list-items.png" class="p-1" style="width: 20%; height: auto" alt="list-items.png">Employees</a>
             <a href="ReturnList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/document.png" class="p-1" style="width: 25%; height: auto" alt="document.png">Return List</a>
 
             <!--Sign-Out-->
-            <a href="../Logins/User.php" class="btn btn-dark rounded-pill mx-auto d-flex align-items-center justify-content-center mt-5" style="width: 65%; height: 42px;">
-                <img src="../Images/logout.png" style="width: 20%; height: auto" alt="logout.png">Sign Out</a>
+            <form action="../User_Interface/function.php" method="post">
+                <button type="submit" name="signoutBTN" class="btn btn-dark rounded-pill mx-auto d-flex align-items-center justify-content-center mt-5" style="width: 65%; height: 42px;">
+                    <img src="../Images/logout.png" style="width: 20%; height: auto" alt="logout.png">Sign Out
+                </button>
+            </form>
         </div>
         <div class="main-content-div mt-3">
             <div class="dashboard-header">
@@ -195,18 +202,33 @@
                     
                     ?>
 
-                        <div class="row border mt-2 py-2" style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
-                            <div class="col col-9">
+                        
+                        <div class="row border mt-2 py-2 " style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
+                            <div class="col col-8">
                                 <Strong>Name: </Strong>
-                                <span><?php echo $rows['supplier_name'] ?></span> <br>
+                                <span><?php echo $rows['s_Name'] ?></span> <br>
+                                <strong>Contact #: </strong>
+                                <span><?php echo $rows['sContactNum'] ?></span> <br>
                                 <strong>Company: </strong>
                                 <span><?php echo $rows['company_name'] ?></span>
                             </div>
-                            <div class="col col-3">
-                                <a href="#" >EDIT</a>
-                                <a href="#">DELETE</a>
+                            <div class="col col-2">
+
+                                <form action="" method="POST">
+                                    <input type="text" name="id" hidden value="<?php echo $rows['supplier_ID'] ?>">
+                                    <button type="submit"  name="editBTN"  class="btn btn-success mt-3"><i class="bi bi-pencil-square"></i> EDIT
+                                </button></form>
+                                
+                            </div>
+                            <div class="col col-2">
+                                <form action="../Database_Operations/execute_Suppliers.php" method="POST">
+                                    <input type="text" name="id" hidden value="<?php echo $rows['supplier_ID'] ?>">
+                                    <button type="submit" class="btn btn-success mt-3" name="deleteBTN"><i class="bi bi-trash"></i> DELETE</button>
+                                </form>
+
                             </div>
                         </div>
+                       
 
                     <?php
                                 }

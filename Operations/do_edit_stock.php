@@ -1,21 +1,10 @@
-<?php
-include "../Database/db_connect.php";
-
-$id = $_GET['sba'];
-$sql = "SELECT * FROM vulcanizing WHERE Supplier_ID=" . $id;
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard | Stocks</title>
+    <title>Admin Dashboard | Add Stock</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         @font-face {
@@ -125,14 +114,10 @@ $row = $result->fetch_assoc();
         }
 
         .form-control {
-            border: 2px solid black;
+            border: 2px solid red;
         }
 
-        h5 {
-            font-weight: bold;
-            color: white;
-        }
-
+        h5,
         h3 {
             font-weight: bold;
             color: white;
@@ -150,7 +135,7 @@ $row = $result->fetch_assoc();
             margin-bottom: 0px;
         }
 
-        .save {
+        .add {
             display: flex;
             position: absolute;
             text-align: center;
@@ -179,7 +164,6 @@ $row = $result->fetch_assoc();
 
         .cancel:hover,
         .cancel:focus {
-            text-decoration: none;
             color: red;
             background-color: white;
             border-color: black;
@@ -207,13 +191,16 @@ $row = $result->fetch_assoc();
             <!--Maintenance-->
             <h3 class="m-5 mb-0">Maintenance</h3>
             <a href="../Admin_Interface/ItemList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/list-items.png" class="p-1" style="width: 20%; height: auto" alt="list-items.png">Item List</a>
+                <img src="../Images/list-items.png" class="p-1" style="width: 20%; height: auto" alt="list-items.png">Employees</a>
             <a href="../Admin_Interface/ReturnList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/document.png" class="p-1" style="width: 25%; height: auto" alt="document.png">Return List</a>
 
             <!--Sign-Out-->
-            <a href="../Logins/User.php" class="btn btn-dark rounded-pill mx-auto d-flex align-items-center justify-content-center mt-5" style="width: 65%; height: 42px;">
-                <img src="../Images/logout.png" style="width: 20%; height: auto" alt="logout.png">Sign Out</a>
+            <form action="../User_Interface/function.php" method="post">
+                <button type="submit" name="signoutBTN" class="btn btn-dark rounded-pill mx-auto d-flex align-items-center justify-content-center mt-5" style="width: 65%; height: 42px;">
+                    <img src="../Images/logout.png" style="width: 20%; height: auto" alt="logout.png">Sign Out
+                </button>
+            </form>
         </div>
         <div class="main-content-div mt-3">
             <div class="dashboard-header">
@@ -222,87 +209,72 @@ $row = $result->fetch_assoc();
             </div>
         </div>
 
-        <a href="../Operations/Add.php" class="btn btn-danger rounded-pill add-button fs-3">
-            <img src="../Images/add.png" style="width: 20%; height: auto" alt="add.png">Add</a>
+        
 
 
         <div class="view-content-div">
             <!-- Content goes here -->
             <div class="container">
                 <div class="row">
-                    <div class="col col-12">
-                        <div class="row">
-                            <div class="col " style="border-radius: 10px; height: 500px; background-color: white;">
-
-                                <div class="row justify-content-center align-items-center" style="height: 70px;">
-                                    <div class="col col-2" style="color: white; border-radius: 10px; background-color: rgb(216, 79, 79);">
-                                        <h2 style="text-align: center; margin-top: 3px;">Add Stock</h2>
-                                    </div>
-
-                                </div>
-
-                                <form action="../Database_Operations/editSQL.php" method="post">
-                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                    <div class="row">
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="sname">
-                                                <h4>Supplier Name:</h4>
-                                            </label>
-                                            <input type="text" class="form-control inputStyle" id="sname" name="sname" value="<?php echo $row['Supplier_Name']; ?>">
-                                        </div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="adate">
-                                                <h4>Arrival Date:</h4>
-                                            </label>
-                                            <input type="date" class="form-control inputStyle" id="adate" name="adate" value="<?php echo $row['Arrival_Date']; ?>">
-                                        </div>
-                                        <div class="w-100"></div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="iname">
-                                                <h4>Stock Name:</h4>
-                                            </label>
-                                            <input type="text" class="form-control inputStyle" id="iname" name="iname" value="<?php echo $row['Item_Name']; ?>">
-                                        </div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="oprice">
-                                                <h4>Original Price:</h4>
-                                            </label>
-                                            <input type="text" class="form-control inputStyle" id="oprice" name="oprice" value="<?php echo $row['SR_Price']; ?>">
-                                        </div>
-                                        <div class="w-100"></div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="category">
-                                                <h4>Category:</h4>
-                                            </label>
-                                            <input type="text" class="form-control inputStyle" id="category" name="category" value="<?php echo $row['Category']; ?>">
-                                        </div>
-                                        <div class="col col-6 mt-3 ps-5">
-                                            <label for="qty">
-                                                <h4>Quantity:</h4>
-                                            </label>
-                                            <input type="text" class="form-control inputStyle" id="qty" name="qty" value="<?php echo $row['Quantity']; ?>">
-                                        </div>
-                                        <div class="w-100"></div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <button class="save btn-danger" type="submit">Save Changes</button>
-                                    <a href="../Admin_Interface/Stocks_Interface.php" class="cancel btn-dark fs-4">Cancel</a>
-
-                                </form>
-
-
-
-
-
+                    <div class="col col-12" style="border-radius: 10px; height: 500px; background-color: white;">
+                        <?php
+                            include "../Database/db_connect.php";
+                            $id = $_GET['id'];
+                            $sql = "SELECT * FROM stocks WHERE stock_ID={$id}";
+                            $do = $conn->query($sql);
+                            $row = $do->fetch_assoc();
+                        
+                        ?>
+                        <div class="row border justify-content-center text-center align-items-center " style="height: 70px;">
+                            <div class="col col-9" style="background-color: rgb(216, 79, 79); border-radius:10px; color:white;">
+                                
+                                <h1>EDIT: <?php echo $row['item_name'] ?></h1>
                             </div>
                         </div>
+
+                        <form action="../Database_Operations/execute_stock.php" method="post">
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <label for="iname"><h4>Item Name:</h4></label>
+                                    <input type="text" name="iname" id="iname" class="form-control w-75" value="<?php echo $row['item_name'] ?>">
+                                </div>
+                                <div class="col col-4">
+                                    <label for="sQty"><h4>In Stock:</h4></label>
+                                    <input type="text" name="sQty" id="sQty" class="form-control w-75" value="<?php echo $row['stock_quantity'] ?>">
+                                </div>
+                            
+                            
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <label for="srPrice"><h4>SR Price:</h4></label>
+                                    <input type="text" name="srPrice" id="srPrice" class="form-control w-75" value="<?php echo $row['price'] ?>">
+                                </div>
+                                <div class="col">
+                                    <label for="category"><h4>Category:</h4></label>
+                                    <input type="text" name="category" id="category" class="form-control w-75" value="<?php echo $row['category'] ?>">
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col">
+                                    <input type="text" name="edit_id" hidden value="<?php echo $row['stock_ID'] ?>">
+                                    <button type="submit" class="btn btn-primary w-100" name="editStockBTN">Save</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="row mt-3">
+                            <div class="col col-12">
+                            
+                                <a href="../Admin_Interface/Stocks_Interface.php" class="btn btn-outline-primary w-100">Cancel</a>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
-
-
-
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 </body>

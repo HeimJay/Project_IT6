@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'Aileron';
+    src: url('path/to/aileron-regular.woff2') format('woff2'),
+        url('path/to/aileron-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Aileron', sans-serif;
+    margin: 0;
+    height: 100vh;
+}
+
+.full-page-div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+}
+
+.side-page-div {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background-color: rgb(216, 79, 79);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.main-content-div {
+    position: absolute;
+    left: 345px;
+    width: 75%;
+    height: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(216, 79, 79);
+    margin-top: 3 auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.view-content-div {
+    position: absolute;
+    top: 125px;
+    left: 345px;
+    width: 75%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(211, 206, 206);
+    margin-top: 5 auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.btn-danger {
+    font-family: 'Aileron', sans-serif;
+    font-size: 23px;
+    border: 2px solid black;
+    color: white;
+    background-color: rgb(216, 79, 79);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+.btn-dark:hover,
+.btn-dark:focus {
+    color: red;
+    background-color: white;
+    border-color: black;
+}
+
+.form-control {
+    border: 2px solid black;
+}
+
+h5 {
+    font-weight: bold;
+    color: white;
+}
+
+h3 {
+    font-weight: bold;
+    color: white;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-header h1 {
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}

@@ -1,3 +1,9 @@
+<?php
+    include "../Database/header.html";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,45 +11,56 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        @font-face {
-            font-family: 'Aileron';
-            src: url('path/to/aileron-regular.woff2') format('woff2'),
-                url('path/to/aileron-regular.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            font-family: 'Aileron', sans-serif;
-        }
-
-        .btn-danger {
-            font-family: 'Aileron', sans-serif;
-            font-size: 23px;
-        }
-
-        .card-body a {
-            font-size: 23px;
-
-        }
-    </style>
+    
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="container-fluid vh-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
 
-            <div class="card" style="width: 30rem; min-height: 35rem;">
-                <img src="../Images/Vulcanizing.png" class="card-img-top mx-auto mb-5" style="width: 90%; height: auto;" alt="Vulcanizing.png">
-                <div class="d-grid gap-6 mt-3">
-                    <a href="#" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center" style="width: 75%; height: 4rem;">Browse Products</a>
-                    <div class="card-body text-center mt-1">
-                        <a href="Admin.php">Login as Admin</a>
+            
+            <div class="col col-5">
+                <div class="card shadow">
+                    <img src="../Images/Vulcanizing.png" class="card-img-top mx-auto mb-5" style="width: 200px; height: 150px;" alt="Vulcanizing.png">
+
+                    <div class="card-body mt-1">
+                        
+                        <form action="../User_Interface/function.php" method="POST">
+                            <div class="row justify-content-center" >
+                                <div class="col col-9 mt-2">
+                                    <label for="usrname"><h3>Email:</h3></label>
+                                    <input type="email" name="usrname" id="usrname" required class="form-control">
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col col-9 mt-2" >
+                                    <label for="passwrd"><h3>Password:</h3></label>
+                                    <input type="password" name="passwrd" id="passwrd" required class="form-control">
+                                </div>
+                                <div class="col col-9 mt-2 text-center" >
+                                    <h6>Don't have an Account? <a href="../User_Interface/register_page.php">Sign up</a></h6>
+                                </div>
+
+                                <div class="col col-9 mt-2 text-center" >
+                                    <button type="submit" name="loginBTN" class="btn btn-primary w-100">Login</button>
+                                </div>
+
+
+                                <div class="col col-9 mt-2 text-center">       
+                                    <p><a href="Admin.php">Login as Admin</a></p>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
+                    
+
                 </div>
+
+
             </div>
+           
+
+            
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
