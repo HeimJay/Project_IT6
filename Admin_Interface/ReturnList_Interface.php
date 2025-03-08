@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,28 +70,32 @@
 
         </div>
         <div class="view-content-div">
-            <div class="row border w-100 m-0" style="height: 500px;">
+            <div class="row w-100 m-0" style="height: 500px;">
                 <div class="col col-12">
 
+                    
                     <form action="" method="post">
-                        <div class="row border">
+                        <div class="row">
                             <div class="col col-5 mt-2">
-                                <input type="text" name="searchVal" placeholder="Search" class="form-control">
+                                <input type="text" name="searchVal" id="searchVal" placeholder="Search" class="form-control">
                             </div>
                             <div class="col col-2 mt-2">
+                                
                                 <button type="submit" name="empSearchBTN" class="btn btn-success">Search</button>
+                                
                             </div>
                             <div class="col col-2"></div>
                         
                             <div class="col col-3 text-center">
                                 <a href="../Operations/do_Retun.php" class="btn btn-danger">Return Item</a>
                             </div>
-                            
+                        
                         </div>
                     </form>
 
 
-                    <div class="row border" style="height: 450px; overflow-y:auto;">
+
+                    <div class="row" style="height: 450px; overflow-y:auto;">
                         <div class="col col-12">
                             <?php
                                 include "../Database/db_connect.php";
@@ -122,7 +128,7 @@
                             ?>
 
                             
-                            <div class="row border mt-2 py-2 justify-content-center" style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
+                            <div class="row mt-2 py-2 justify-content-center" style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
                                 <div class="col col-5">
                                     <Strong>Item Name: </Strong>
                                     <span><?php echo $rows['item_name'] ?></span> <br>

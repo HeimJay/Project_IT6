@@ -82,14 +82,29 @@
             <div class="dashboard-header">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 12%; height: auto" alt="dashboard.png">
                 <h1>Stocks</h1>
+
+                <form action="" method="post">
+
+                    <div class="row ms-5 w-100" style="height: 70px;">
+
+                        <div class="col col-8 mt-3" >
+                           <input type="text" name="sSearch" placeholder="Search" class="form-control">
+                        </div>
+                        <div class="col col-2 mt-3">
+                            <button type="submit" name="stockSearchBTN" class="btn btn-success">Search</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
 
         <!-- FUNCTION TOOLS -->
 
-        <div class="row border justify-content-around align-items-center text-center function-buttons" style="height: 50px;">
+        <div class="row justify-content-around align-items-center text-center function-buttons" style="height: 50px;">
             <div class="col col-5 p-0 m-0" style="background-color: rgb(216, 79, 79); height:40px; border-radius:5px;">
                 <a href="../Operations/do_stockIn.php" class="btn btn-danger" style="height: 40px; width:210px;">Stock In</a>
+                
             </div>
             <div class="col col-5 p-0 m-0" style="background-color: rgb(216, 79, 79); height:40px; border-radius:10px;">
                 <a href="../Operations/do_addStock.php" class="btn btn-danger" style="height: 40px; width:210px;">Add Stock</a>
@@ -143,8 +158,21 @@
                             <?php
                                 include "../Database/db_connect.php";
 
-                                try{
+                                $sql;
+
+                                if(isset($_POST['stockSearchBTN'])){
+
+                                    $sValue = $_POST['sSearch'];
+
+                                    $sql = "SELECT * FROM stocks WHERE item_name LIKE '%$sValue%' OR
+                                                                            category LIKE '%$sValue%'";
+
+                                }else{
                                     $sql = "SELECT * FROM stocks";
+                                }
+
+                                try{
+                                    
                                     $do = $conn->query($sql);
 
                                     if($do->num_rows > 0){
@@ -184,6 +212,14 @@
                             <?php
                             
                                         }
+                                    }else{
+                                        echo "
+                                            <div class='row mt-2 py-2 justify-content-center'>
+                                                <div class='col col-5 text-center'>
+                                                <Strong>No Result</Strong>
+                                                </div>
+                                            </div>
+                                            ";
                                     }
 
                                 }catch(\Exception $e){

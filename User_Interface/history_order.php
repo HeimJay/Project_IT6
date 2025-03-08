@@ -43,8 +43,8 @@
                     <h5 class="text-center" style="margin-left: 10px;">3G Tires Parts and Vulcanizing Shop</h5>
                 </div>
 
-                <div class="row border justify-content-center">
-                    <div class="col col-10 border mt-3 py-2">
+                <div class="row justify-content-center">
+                    <div class="col col-10 mt-3 py-2 border" style="border-radius:10px;">
                         <span><h4 style="color: white;">Welcome, <?php echo $row['cFname'] ?></h4></span>
                     </div>
 
@@ -68,26 +68,26 @@
             <div class="col col-9">
 
                 <!-- HEADER -->
-                <div class="row  mt-3 mx-4 justify-content-center" style="height: 70px; background-color: rgb(216, 79, 79); border-radius:10px;">
-                    <div class="col col-3 " style="color:white; height: 70px;" >
-                        <h2 class="pt-3">Item List:</h2>
+                <form action="history_order.php" method="post">
+                    <div class="row  mt-3 mx-4 justify-content-center" style="height: 70px; background-color: rgb(216, 79, 79); border-radius:10px;">
+                        <div class="col col-3 " style="color:white; height: 70px;" >
+                            <h2 class="pt-3">History:</h2>
+                        </div>
+                        <div class="col col-5 " style="color:white; height: 70px;" >
+                            <input type="text" name="sSearch" class="form-control mt-3">
+                           
+                    
+                        </div>
+                        <div class="col col-2  pt-3" style="color:white; height: 70px;" >
+                    
+                            <button class="btn btn-success" name="histSearch">Search</button>
+                        </div>
+                        <div class="col col-2  pt-3" style="color:white; height: 70px;" >
+                    
+                            <a href="order_interface.php" class="btn btn-primary">Go Back</a>
+                        </div>
                     </div>
-                    <div class="col col-5 " style="color:white; height: 70px;" >
-                        <input type="text" name="search" class="form-control mt-3" placeholder="Search Here">
-                        
-                    </div>
-                    <div class="col col-2  pt-3" style="color:white; height: 70px;" >
-                        
-                        <button class="btn btn-success">Search</button>
-                    </div>
-
-                    <div class="col col-2  pt-3" style="color:white; height: 70px;" >
-                        
-                        <a href="order_interface.php" class="btn btn-primary">Go Back</a>
-                    </div>
-
-
-                </div>
+                </form>
 
                 <!-- FUNCTIONS/TOOLS -->
                 <div class="row  mx-4 mt-2" style="height: 590px;overflow-y:auto;">
@@ -98,11 +98,27 @@
                                 
 
                                 <?php
-                                    include "../Database/db_connect.php";
+                                    
+
+                                    $sql;
+
+                                    if(!empty($_POST['sSearch'])){
+                                        $sValue = $_POST['sSearch'];
+                                        $custID = $_SESSION['login_ID'];
+    
+
+                                        $sql = "SELECT * FROM orders_view WHERE customer_ID LIKE '$custID' AND 
+                                                                                CONCAT (c_name LIKE '%$sValue%' OR
+                                                                                item_name LIKE '%$sValue%' OR
+                                                                                category LIKE '%$sValue%' OR
+                                                                                order_date LIKE '%$sValue%')";
+                                    }else{
+                                        $custID = $_SESSION['login_ID'];
+                                        $sql = "SELECT * FROM orders_view WHERE customer_ID='$custID' ORDER BY order_date DESC";
+                                    }
 
                                     try{
-
-                                        $sql = "SELECT * FROM orders_view WHERE customer_ID='$custID' ORDER BY order_date DESC";
+                            
                                         $result = $conn->query($sql);
 
                                         if($result->num_rows >0){
@@ -139,8 +155,13 @@
                                 <?php
                                             }
                                         } else{
-
-                                            echo "No History";
+                                            echo "
+                                            <div class='row mt-2 py-2 justify-content-center'>
+                                                <div class='col col-5 text-center'>
+                                                <Strong>No Result</Strong>
+                                                </div>
+                                            </div>
+                                            ";
                                         }
 
                                     } catch(\Exception $e){

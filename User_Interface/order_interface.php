@@ -41,16 +41,16 @@
                     <h5 class="text-center" style="margin-left: 10px;">3G Tires Parts and Vulcanizing Shop</h5>
                 </div>
 
-                <div class="row border justify-content-center">
-                    <div class="col col-10 border mt-3 py-2">
+                <div class="row justify-content-center">
+                    <div class="col col-10 border mt-3 py-2" style="border-radius:10px;">
                         <span><h4 style="color: white;">Welcome, <?php echo $row['cFname'] ?></h4></span>
                     </div>
 
-                    <div class="col col-10 border mt-3">
+                    <div class="col col-10 mt-3">
                         <a href="history_order.php" class="btn btn-primary w-100">View Order/s History</a>
                     </div>
 
-                    <div class="col col-10 border mt-3">
+                    <div class="col col-10 mt-3">
                         <form action="function.php" method="POST">
                             <button type="submit" name="signoutBTN" class="btn btn-primary w-100">Sign out</button>
 
@@ -66,31 +66,31 @@
             <div class="col col-9">
 
                 <!-- HEADER -->
-                <div class="row  mt-3 mx-4 justify-content-center" style="height: 70px; background-color: rgb(216, 79, 79); border-radius:10px;">
-                    <div class="col col-3 " style="color:white; height: 70px;" >
-                        <h2 class="pt-3">Item List:</h2>
+                <form action="order_interface.php" method="post">
+                    <div class="row  mt-3 mx-4 justify-content-center" style="height: 70px; background-color: rgb(216, 79, 79); border-radius:10px;">
+                        <div class="col col-3 " style="color:white; height: 70px;" >
+                            <h2 class="pt-3">Item List:</h2>
+                        </div>
+                        <div class="col col-5 " style="color:white; height: 70px;" >
+                            <input type="text" name="sSearch" class="form-control mt-3">
+                    
+                        </div>
+                        <div class="col col-3  pt-3" style="color:white; height: 70px;" >
+                    
+                            <button class="btn btn-success" type="submit" name="stockSearch">Search</button>
+                        </div>
                     </div>
-                    <div class="col col-5 " style="color:white; height: 70px;" >
-                        <input type="text" name="search" class="form-control mt-3" placeholder="Search Here">
-                        
-                    </div>
-                    <div class="col col-3  pt-3" style="color:white; height: 70px;" >
-                        
-                        <button class="btn btn-success">Search</button>
-                    </div>
-
-
-                </div>
+                </form>
 
                 <!-- FUNCTIONS/TOOLS -->
-                <div class="row border mx-4 mt-2" style="height: 50px;">
+                <div class="row mx-4 mt-1" style="height: 50px;">
                     <div class="col">
-                        <h1>functions here!!!</h1>
+                        
                     </div>
                 </div>
 
                 <!-- BODY -->
-                <div class="row border mx-4 mt-2" style="height: 530px;">
+                <div class="row mx-4 mt-2" style="height: 530px;">
                     <div class="col col-12">
 
                         <!-- FOR STOCKS -->
@@ -114,17 +114,27 @@
                             </div>
 
 
-                            <div class="col col-12">
+                            <div class="col col-12 mt-4">
                     
                                 <!--BODY-->
                                 <div class="row " style="height: 400px; overflow:auto;">
                                     <div class="col col-12">
 
                                         <?php
-                                            include "../Database/db_connect.php";
+                                            
+                                            $sql;
+
+                                            if(isset($_POST['stockSearch'])){
+                                                $sValue = $_POST['sSearch'];
+
+                                                $sql = "SELECT * FROM stocks WHERE item_name LIKE '%$sValue%' OR
+                                                                                    category LIKE '%$sValue%'";
+                                            }else{
+                                                $sql = "SELECT * FROM stocks";
+                                            }
 
                                             try{
-                                                $sql = "SELECT * FROM stocks";
+                                                
                                                 $do = $conn->query($sql);
 
                                                 if($do->num_rows > 0){
@@ -160,6 +170,14 @@
                                         <?php
                                         
                                                     }
+                                                } else{
+                                                    echo "
+                                                        <div class='row mt-2 py-2 justify-content-center'>
+                                                            <div class='col col-5 text-center'>
+                                                            <Strong>No Result</Strong>
+                                                            </div>
+                                                        </div>
+                                                        ";
                                                 }
 
                                             }catch(\Exception $e){

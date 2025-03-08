@@ -56,23 +56,47 @@
         </div>
         <div class="view-content-div">
 
-            <div class="row border w-100" style="margin-left: 0px; height:500px;">
+            <div class="row w-100" style="margin-left: 0px; height:500px;">
                 <div class="col col-12">
 
-
-                    <div class="row justify-content-end ">
-                        <div class="col col-3">
-                            
-                            <a href="../Operations/do_addEmployee.php" class="btn btn-danger">Add Employee</a>
-                            
+                    <form action="" method="post"> 
+                        <div class="row justify-content-end ">
+                            <div class="col col-5 mt-2" >
+                               <input type="text" name="sSearch" placeholder="Search" class="form-control">
+                            </div>
+                            <div class="col col-2 mt-2">
+                                <button type="submit" name="empSearchBTN" class="btn btn-success">Search</button>
+                            </div>
+                            <div class="col col-3">
+                        
+                                <a href="../Operations/do_addEmployee.php" class="btn btn-danger">Add Employee</a>
+                        
+                            </div>
                         </div>
+                    </form>
+
+                    <div class="row">
 
                         <div class="col col-12 mt-4" style="overflow: auto;">
 
-                            <?php   
-                                try{
+                            <?php 
+                            
+                                $sql;
 
+                                if(isset($_POST['empSearchBTN'])){
+                                    $sValue = $_POST['sSearch'];
+
+                                    $sql = "SELECT * FROM employees WHERE eFname LIKE '%$sValue%' OR
+                                                                            eLname LIKE '%$sValue%' OR
+                                                                            emp_position LIKE '%$sValue%' OR
+                                                                            eAddress LIKE '%$sValue%'";
+                                }
+                                else{
                                     $sql = "SELECT * FROM employees";
+                                }
+
+                                try{
+                                    
                                     $do = $conn->query($sql);
 
                                     if($do->num_rows>0){
@@ -80,29 +104,37 @@
                             
                             ?>
 
-                            <form action="../Operations/do_editEmployee.php" method="post">
-                                <div class="row mx-1" style="background-color: rgb(216, 79, 79); border-radius:10px;">
-                                    <div class="col col-5 py-2" style="color: white;">
-                                        <strong>Name:</strong>
-                                        <span><?php echo $rows['e_Name'] ?></span> <br>
-                                        <strong>Contact #:</strong>
-                                        <span><?php echo $rows['eContactNum'] ?></span>
+                                <form action="../Operations/do_editEmployee.php" method="post">
+                                    <div class="row mx-1" style="background-color: rgb(216, 79, 79); border-radius:10px;">
+                                        <div class="col col-5 py-2" style="color: white;">
+                                            <strong>Name:</strong>
+                                            <span><?php echo $rows['e_Name'] ?></span> <br>
+                                            <strong>Contact #:</strong>
+                                            <span><?php echo $rows['eContactNum'] ?></span>
+                                        </div>
+                                        <div class="col col-5 py-2" style="color: white;">
+                                            <strong>Position:</strong>
+                                            <span><?php echo $rows['emp_position'] ?></span> <br>
+                                            <strong>Address:</strong>
+                                            <span><?php echo $rows['eAddress'] ?></span>
+                                        </div>
+                                        <div class="col col-2 pt-3">
+                                            <input type="text" hidden name="empID" value="<?php echo $rows['employee_ID'] ?>">
+                                            <button class="btn btn-success" type="submit">EDIT</button>
+                                        </div>
                                     </div>
-                                    <div class="col col-5 py-2" style="color: white;">
-                                        <strong>Position:</strong>
-                                        <span><?php echo $rows['emp_position'] ?></span> <br>
-                                        <strong>Address:</strong>
-                                        <span><?php echo $rows['eAddress'] ?></span>
-                                    </div>
-                                    <div class="col col-2 pt-3">
-                                        <input type="text" hidden name="empID" value="<?php echo $rows['employee_ID'] ?>">
-                                        <button class="btn btn-success" type="submit">EDIT</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
 
                             <?php  
                                         }
+                                    }else{
+                                        echo "
+                                            <div class='row mt-2 py-2 justify-content-center'>
+                                                <div class='col col-5 text-center'>
+                                                <Strong>No Result</Strong>
+                                                </div>
+                                            </div>
+                                            ";
                                     }
 
                                 }catch(\Exception $e){

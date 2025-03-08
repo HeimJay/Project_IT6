@@ -176,11 +176,19 @@
                 <!-- HEADER -->
                 <div class="col col-12">
                     
-                    <div class="row w-100 justify-content-end">
-                        <div class="col col-2">
-                            <a href="../Operations/do_addSuppliers.php" class="btn btn-danger">Add Supplier</a>
+                    <form action="" method="post">
+                        <div class="row w-100 justify-content-end">
+                            <div class="col col-5 mt-2" >
+                               <input type="text" name="sSearch" placeholder="Search" class="form-control">
+                            </div>
+                            <div class="col col-2 mt-2">
+                                <button type="submit" name="suppSearchBTN" class="btn btn-success">Search</button>
+                            </div>
+                            <div class="col col-2">
+                                <a href="../Operations/do_addSuppliers.php" class="btn btn-danger">Add Supplier</a>
+                            </div>
                         </div>
-                    </div>
+                    </form>
 
                 </div>
 
@@ -192,9 +200,22 @@
                     <?php
                         include "../Database/db_connect.php";
 
+                        $sql;
+
+                        if(isset($_POST['suppSearchBTN'])){
+                            $sValue = $_POST['sSearch'];
+
+                            $sql = "SELECT * FROM suppliers WHERE sFname LIKE '%$sValue%' OR
+                                                                  sLname LIKE '%$sValue%' OR
+                                                                  company_name LIKE '%$sValue%'";
+                        }
+                        else{
+                            $sql = "SELECT * FROM suppliers";
+                        }
+
                         try{
 
-                            $sql = "SELECT * FROM suppliers";
+                            
                             $result = $conn->query($sql);
 
                             if($result->num_rows >0){
@@ -232,6 +253,14 @@
 
                     <?php
                                 }
+                            }else{
+                                echo "
+                                    <div class='row mt-2 py-2 justify-content-center'>
+                                        <div class='col col-5 text-center'>
+                                        <Strong>No Result</Strong>
+                                        </div>
+                                    </div>
+                                    ";
                             }
 
                         } catch(\Exception $e){
