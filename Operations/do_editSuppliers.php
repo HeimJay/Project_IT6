@@ -1,10 +1,31 @@
+<?php
+
+    include "../Database/db_connect.php";
+
+    try{
+        $suppID = $_POST['editSuppID'];
+        $sql = "SELECT * FROM suppliers WHERE supplier_ID='$suppID'";
+        $do = $conn->query($sql);
+
+        $row = $do->fetch_assoc();
+
+
+    }catch(\Exception $e){
+        die($e);
+    }
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard | Suppliers</title>
+    <title>Admin Dashboard | Edit Supplier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -43,7 +64,7 @@
         <div class="main-content-div mt-3">
             <div class="dashboard-header">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 11%; height: auto" alt="dashboard.png">
-                <h1>Suppliers</h1>
+                <h1>Supplier</h1>
             </div>
 
             
@@ -57,37 +78,38 @@
                     <form action="../Database_Operations/execute_Suppliers.php" method="POST">
                         <div class="row justify-content-center text-center">
                             <div class="col col-5 mt-1 border" style="background-color:rgb(216, 79, 79); border-radius:10px;">
-                                <h1 style="color:white; padding-top: 10px;">Add Supplier</h1>
+                                <h1 style="color:white; padding-top: 10px;">Edit Supplier</h1>
                             </div>
                         </div>
                         <div class="row border mt-3" style="height: 250px;">
                             <div class="col col-12">
                                 <div class="row justify-content-around">
                                     <div class="col col-5">
+                                        <input type="text" name="sID" hidden value="<?php echo $row['supplier_ID'] ?>">
                                         <label for="Sfname"><h4>First Name:</h4></label>
-                                        <input type="text" name="Sfname" required class="form-control w-100">
+                                        <input type="text" name="Sfname" required class="form-control w-100" value="<?php echo $row['sFname'] ?>">
                                     </div>
                                     <div class="col col-5">
                                         <label for="Slname"><h4>Last Name:</h4></label>
-                                        <input type="text" name="Slname" required class="form-control w-100">
+                                        <input type="text" name="Slname" required class="form-control w-100" value="<?php echo $row['sLname'] ?>">
                                     </div>
                         
                                 </div>
                                 <div class="row justify-content-around">
                                     <div class="col col-5">
                                         <label for="conNum"><h4>Contact #:</h4></label>
-                                        <input type="text" name="conNum" required class="form-control w-100">
+                                        <input type="text" name="conNum" required class="form-control w-100" value="<?php echo $row['sContactNum'] ?>">
                                     </div>
                                     <div class="col col-5">
                                         <label for="Scname"><h4>Company Name:</h4></label>
-                                        <input type="text" name="Scname" required class="form-control w-100">
+                                        <input type="text" name="Scname" required class="form-control w-100" value="<?php echo $row['company_name'] ?>">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row ">
                             <div class="col col-12">
-                                <button type="submit" name="addBTN" class="btn btn-primary w-100 mt-3">Save</button>
+                                <button type="submit" name="sEditSaveBTN" class="btn btn-primary w-100 mt-3">Save</button>
                                 <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-outline-primary w-100 mt-3">Cancel</a>
                             </div>
                         </div>

@@ -155,27 +155,28 @@
 
                                 <form action="../Operations/do_edit_stock.php" method="get">
                                     <div class="row text-center align-items-center mt-2" style="height:50px; background-color:rgb(216, 79, 79); border-radius: 10px; color:white; ">
-                                        <div class="col col-2">
-                                            <span><?php echo $rows['item_name'] ?></span>
-                                        </div>
-                                        <div class="col col-2">
-                                            <span><?php echo $rows['category'] ?></span>
-                                        </div>
-                                        <div class="col col-2">
-                                            <span><?php echo $rows['price'] ?></span>
-                                        </div>
-                                        <div class="col col-2">
-                                            <span><?php echo $rows['selling_price'] ?></span>
-                                        </div>
-                                        <div class="col col-2">
-                                            <span><?php echo $rows['stock_quantity'] ?></span>
-                                        </div>
-
-                                        <div class="col col-2">
-                                            <input type="text" hidden name="id" value="<?php echo $rows['stock_ID'] ?>">
-                                            <button type="submit" class="btn btn-success" style="width: 45px; height: 45px;"><i class="bi bi-pencil-square"></i></button>
+                                        
+                                            <div class="col col-2">
+                                                <span><?php echo $rows['item_name'] ?></span>
+                                            </div>
+                                            <div class="col col-2">
+                                                <span><?php echo $rows['category'] ?></span>
+                                            </div>
+                                            <div class="col col-2">
+                                                <span><?php echo $rows['price'] ?></span>
+                                            </div>
+                                            <div class="col col-2">
+                                                <span><?php echo $rows['selling_price'] ?></span>
+                                            </div>
+                                            <div class="col col-2">
+                                                <span><?php echo $rows['stock_quantity'] ?></span>
+                                            </div>
+                                            <div class="col col-2">
+                                                <input type="text" hidden name="id" value="<?php echo $rows['stock_ID'] ?>">
+                                                <button type="submit" class="btn btn-success" style="width: 45px; height: 45px;"><i class="bi bi-gear-fill"></i></button>
                                             
-                                        </div>
+                                            </div>
+                                        
                                     </div>
                                 </form>
 

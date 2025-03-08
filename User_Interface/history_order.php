@@ -102,7 +102,7 @@
 
                                     try{
 
-                                        $sql = "SELECT * FROM orders_view WHERE customer_ID='$custID'";
+                                        $sql = "SELECT * FROM orders_view WHERE customer_ID='$custID' ORDER BY order_date DESC";
                                         $result = $conn->query($sql);
 
                                         if($result->num_rows >0){

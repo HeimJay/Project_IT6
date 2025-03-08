@@ -80,7 +80,7 @@
                             
                             ?>
 
-                            <form action="" method="post">
+                            <form action="../Operations/do_editEmployee.php" method="post">
                                 <div class="row mx-1" style="background-color: rgb(216, 79, 79); border-radius:10px;">
                                     <div class="col col-5 py-2" style="color: white;">
                                         <strong>Name:</strong>
@@ -95,7 +95,8 @@
                                         <span><?php echo $rows['eAddress'] ?></span>
                                     </div>
                                     <div class="col col-2 pt-3">
-                                        <button class="btn btn-success">EDIT</button>
+                                        <input type="text" hidden name="empID" value="<?php echo $rows['employee_ID'] ?>">
+                                        <button class="btn btn-success" type="submit">EDIT</button>
                                     </div>
                                 </div>
                             </form>

@@ -19,7 +19,12 @@
         $smt->close();
         $conn->close();
 
-        header('location: ../Admin_Interface/Stocks_Interface.php');
+        echo "<script>
+                alert('Added Item');
+                window.location.href = '../Admin_Interface/Stocks_Interface.php';
+        </script>";
+
+     
     } catch (\Exception $e) {
         $conn->close();
         die($e);

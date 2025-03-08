@@ -246,7 +246,6 @@
                                     <div class="col col-2" style="color: white; border-radius: 10px; background-color: rgb(216, 79, 79);">
                                         <h2 style="text-align: center; margin-top: 3px;">Stock In</h2>
                                     </div>
-
                                 </div>
 
                                 <form action="../Database_Operations/stockIn.php" method="post">
@@ -261,7 +260,6 @@
                                                 <option value="">None</option>
                                                 <?php
                                                     
-
                                                     try{
                                                         include "../Database/db_connect.php";
                                                         $sql = "SELECT * FROM suppliers";
@@ -292,7 +290,6 @@
 
                                                 <option value="">None</option>
                                                 <?php
-                                                    
 
                                                     try{
                                                         include "../Database/db_connect.php";
@@ -311,21 +308,16 @@
 
                                         <div class="w-100"></div>
 
-
-
                                         <div class="col col-3 mt-3">
                                             <label for="qty"><h4>Qty:</h4></label> <br>
                                             <input type="text" name="qty" id="qty" class="form-control" required>
                                         </div>
 
-
                                         <div class="col col-3 mt-3">
                                             <label for="date"><h4>Date:</h4></label> <br>
                                             <input type="date" name="date" id="date" class="form-control" required>
                                         </div>
-
-
-                                        
+     
                                     </div>
                                     <button class="add btn-danger" type="submit">Add</button>
                                     <a href="../Admin_Interface/Stocks_Interface.php" class="cancel btn-dark fs-4">Cancel</a>

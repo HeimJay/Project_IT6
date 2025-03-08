@@ -214,15 +214,15 @@
                             </div>
                             <div class="col col-2">
 
-                                <form action="" method="POST">
-                                    <input type="text" name="id" hidden value="<?php echo $rows['supplier_ID'] ?>">
+                                <form action="../Operations/do_editSuppliers.php" method="POST">
+                                    <input type="text" name="editSuppID" hidden value="<?php echo $rows['supplier_ID'] ?>">
                                     <button type="submit"  name="editBTN"  class="btn btn-success mt-3"><i class="bi bi-pencil-square"></i> EDIT
                                 </button></form>
                                 
                             </div>
                             <div class="col col-2">
                                 <form action="../Database_Operations/execute_Suppliers.php" method="POST">
-                                    <input type="text" name="id" hidden value="<?php echo $rows['supplier_ID'] ?>">
+                                    <input type="text" name="deleteSuppID" hidden value="<?php echo $rows['supplier_ID'] ?>">
                                     <button type="submit" class="btn btn-success mt-3" name="deleteBTN"><i class="bi bi-trash"></i> DELETE</button>
                                 </form>
 

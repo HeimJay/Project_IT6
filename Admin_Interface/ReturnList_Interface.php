@@ -68,6 +68,107 @@
 
         </div>
         <div class="view-content-div">
+            <div class="row border w-100 m-0" style="height: 500px;">
+                <div class="col col-12">
+
+                    <form action="" method="post">
+                        <div class="row border">
+                            <div class="col col-5 mt-2">
+                                <input type="text" name="searchVal" placeholder="Search" class="form-control">
+                            </div>
+                            <div class="col col-2 mt-2">
+                                <button type="submit" name="empSearchBTN" class="btn btn-success">Search</button>
+                            </div>
+                            <div class="col col-2"></div>
+                        
+                            <div class="col col-3 text-center">
+                                <a href="../Operations/do_Retun.php" class="btn btn-danger">Return Item</a>
+                            </div>
+                            
+                        </div>
+                    </form>
+
+
+                    <div class="row border" style="height: 450px; overflow-y:auto;">
+                        <div class="col col-12">
+                            <?php
+                                include "../Database/db_connect.php";
+
+                                
+                                $sql;
+
+                                if(isset($_POST['empSearchBTN'])){
+                                    $sValue = $_POST['searchVal'];
+
+                                    $sql = "SELECT * FROM retuns_view WHERE item_name LIKE '%$sValue%' OR
+                                                                            category LIKE '%$sValue%' OR
+                                                                            return_date LIKE '%$sValue%' OR
+                                                                            e_Name LIKE '%$sValue%'";
+
+                                    
+
+                                }else{
+                                    $sql = "SELECT * FROM retuns_view";
+                                }
+
+                                try{
+
+                                    
+                                    $result = $conn->query($sql);
+
+                                    if($result->num_rows >0){
+                                        while($rows = $result->fetch_assoc()){            
+                        
+                            ?>
+
+                            
+                            <div class="row border mt-2 py-2 justify-content-center" style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
+                                <div class="col col-5">
+                                    <Strong>Item Name: </Strong>
+                                    <span><?php echo $rows['item_name'] ?></span> <br>
+                                    <strong>Category #: </strong>
+                                    <span><?php echo $rows['category'] ?></span> <br>
+                                    <strong>Qty: </strong>
+                                    <span><?php echo $rows['return_quantity'] ?></span>
+                                </div>
+                                <div class="col col-5">
+                                    <Strong>Return Date: </Strong>
+                                    <span><?php echo $rows['return_date'] ?></span> <br>
+                                    <strong>Employee: </strong>
+                                    <span><?php echo $rows['e_Name'] ?></span> <br>
+                                </div>
+                                <div class="col col-2">
+                                    <form action="" method="POST">
+                                        <input type="text" name="returnID" hidden value="<?php echo $rows['return_ID'] ?>">
+                                        <input type="text" name="stockID" hidden value="<?php echo $rows['stock_ID'] ?>">
+                                        <button type="submit" class="btn btn-success mt-3" name="deleteBTN"><i class="bi bi-trash"></i> DELETE</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                       
+
+                            <?php
+                                        }
+                                    }else{
+                                        echo "
+                                            <div class='row mt-2 py-2 justify-content-center'>
+                                                <div class='col col-5 text-center'>
+                                                <Strong>No Result</Strong>
+                                                </div>
+                                            </div>
+                                            ";
+                                    }
+
+                                } catch(\Exception $e){
+                                    die($e);
+                                }
+                            ?>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
 
         </div>
 
