@@ -1,4 +1,7 @@
+<?php
+    include "../Database/header.html";
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="style_adminInterface.css">
     
     <style>
@@ -44,7 +47,7 @@
             <a href="Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
             <a href="ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
+                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
             <a href="Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
@@ -75,13 +78,13 @@
 
                     
                     <form action="" method="post">
-                        <div class="row">
-                            <div class="col col-5 mt-2">
-                                <input type="text" name="searchVal" id="searchVal" placeholder="Search" class="form-control">
+                        <div class="row mx-0 align-items-center justify-content-center " style="height: 70px;">
+                            <div class="col col-5 mt-2 p-1" style="background-color: rgb(216, 79, 79); border-radius:50px;">
+                                <input type="text" name="searchVal" id="searchVal" placeholder="Search" class="form-control rounded-pill border border-dark" >
                             </div>
                             <div class="col col-2 mt-2">
                                 
-                                <button type="submit" name="empSearchBTN" class="btn btn-success">Search</button>
+                                <button type="submit" name="empSearchBTN" class="btn btn-danger"><i class="bi bi-search"></i></button>
                                 
                             </div>
                             <div class="col col-2"></div>
@@ -95,7 +98,7 @@
 
 
 
-                    <div class="row" style="height: 450px; overflow-y:auto;">
+                    <div class="row" style="height: 415px; overflow-y:auto;">
                         <div class="col col-12">
                             <?php
                                 include "../Database/db_connect.php";

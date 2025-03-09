@@ -43,7 +43,7 @@
             <a href="../Admin_Interface/Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
             <a href="../Admin_Interface/ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
+                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
             <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
@@ -72,7 +72,7 @@
         </div>
         <div class="view-content-div">
 
-            <div class="row border w-100" style="height: 480px; margin:10px; background-color:white; border-radius:10px;">
+            <div class="row w-100" style="height: 480px; margin:10px; background-color:white; border-radius:10px;">
                 <div class="col col-12">
 
                     <form action="../Database_Operations/execute_Suppliers.php" method="POST">
@@ -81,17 +81,17 @@
                                 <h1 style="color:white; padding-top: 10px;">Edit Supplier</h1>
                             </div>
                         </div>
-                        <div class="row border mt-3" style="height: 250px;">
+                        <div class="row mt-3" style="height: 250px;">
                             <div class="col col-12">
                                 <div class="row justify-content-around">
                                     <div class="col col-5">
                                         <input type="text" name="sID" hidden value="<?php echo $row['supplier_ID'] ?>">
                                         <label for="Sfname"><h4>First Name:</h4></label>
-                                        <input type="text" name="Sfname" required class="form-control w-100" value="<?php echo $row['sFname'] ?>">
+                                        <input type="text" name="Sfname" readonly required class="form-control w-100" value="<?php echo $row['sFname'] ?>">
                                     </div>
                                     <div class="col col-5">
                                         <label for="Slname"><h4>Last Name:</h4></label>
-                                        <input type="text" name="Slname" required class="form-control w-100" value="<?php echo $row['sLname'] ?>">
+                                        <input type="text" name="Slname" readonly required class="form-control w-100" value="<?php echo $row['sLname'] ?>">
                                     </div>
                         
                                 </div>

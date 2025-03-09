@@ -144,7 +144,7 @@
             <a href="Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
             <a href="ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
+                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
             <a href="Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
@@ -177,12 +177,12 @@
                 <div class="col col-12">
                     
                     <form action="" method="post">
-                        <div class="row w-100 justify-content-end">
-                            <div class="col col-5 mt-2" >
-                               <input type="text" name="sSearch" placeholder="Search" class="form-control">
+                        <div class="row w-100 justify-content-end mx-0 align-items-center" style="height: 70px;">
+                            <div class="col col-5 p-1 border" style="background-color: rgb(216, 79, 79); border-radius:50px;">
+                               <input type="text" name="sSearch" placeholder="Search" class="form-control rounded-pill border border-dark">
                             </div>
-                            <div class="col col-2 mt-2">
-                                <button type="submit" name="suppSearchBTN" class="btn btn-success">Search</button>
+                            <div class="col col-1 text-center border" style="background-color: rgb(216, 79, 79); border-radius:10px; padding-left: 8px; padding-top: 5px; padding-bottom: 5px;">
+                                <button type="submit" name="suppSearchBTN" class="btn btn-danger"><i class="bi bi-search"></i></button>
                             </div>
                             <div class="col col-2">
                                 <a href="../Operations/do_addSuppliers.php" class="btn btn-danger">Add Supplier</a>
@@ -195,80 +195,69 @@
 
 
                 <!-- BODY -->
-                <div class="col col-12" style="overflow: auto;">
-
-                    <?php
-                        include "../Database/db_connect.php";
-
-                        $sql;
-
-                        if(isset($_POST['suppSearchBTN'])){
-                            $sValue = $_POST['sSearch'];
-
-                            $sql = "SELECT * FROM suppliers WHERE sFname LIKE '%$sValue%' OR
-                                                                  sLname LIKE '%$sValue%' OR
-                                                                  company_name LIKE '%$sValue%'";
-                        }
-                        else{
-                            $sql = "SELECT * FROM suppliers";
-                        }
-
-                        try{
-
-                            
-                            $result = $conn->query($sql);
-
-                            if($result->num_rows >0){
-                                while($rows = $result->fetch_assoc()){            
-                    
-                    ?>
-
-                        
-                        <div class="row border mt-2 py-2 " style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
-                            <div class="col col-8">
-                                <Strong>Name: </Strong>
-                                <span><?php echo $rows['s_Name'] ?></span> <br>
-                                <strong>Contact #: </strong>
-                                <span><?php echo $rows['sContactNum'] ?></span> <br>
-                                <strong>Company: </strong>
-                                <span><?php echo $rows['company_name'] ?></span>
-                            </div>
-                            <div class="col col-2">
-
-                                <form action="../Operations/do_editSuppliers.php" method="POST">
-                                    <input type="text" name="editSuppID" hidden value="<?php echo $rows['supplier_ID'] ?>">
-                                    <button type="submit"  name="editBTN"  class="btn btn-success mt-3"><i class="bi bi-pencil-square"></i> EDIT
-                                </button></form>
-                                
-                            </div>
-                            <div class="col col-2">
-                                <form action="../Database_Operations/execute_Suppliers.php" method="POST">
-                                    <input type="text" name="deleteSuppID" hidden value="<?php echo $rows['supplier_ID'] ?>">
-                                    <button type="submit" class="btn btn-success mt-3" name="deleteBTN"><i class="bi bi-trash"></i> DELETE</button>
-                                </form>
-
-                            </div>
-                        </div>
-                       
-
-                    <?php
-                                }
-                            }else{
-                                echo "
-                                    <div class='row mt-2 py-2 justify-content-center'>
-                                        <div class='col col-5 text-center'>
-                                        <Strong>No Result</Strong>
-                                        </div>
-                                    </div>
-                                    ";
+                 
+                <div class="row" style="overflow: auto; height:420px;">
+                    <div class="col col-12" >
+                        <?php
+                            include "../Database/db_connect.php";
+                            $sql;
+                            if(isset($_POST['suppSearchBTN'])){
+                                $sValue = $_POST['sSearch'];
+                                $sql = "SELECT * FROM suppliers WHERE sFname LIKE '%$sValue%' OR
+                                                                      sLname LIKE '%$sValue%' OR
+                                                                      company_name LIKE '%$sValue%'";
                             }
-
-                        } catch(\Exception $e){
-                            die($e);
-                        }
-                    ?>
-
-
+                            else{
+                                $sql = "SELECT * FROM suppliers";
+                            }
+                            try{
+                    
+                                $result = $conn->query($sql);
+                                if($result->num_rows >0){
+                                    while($rows = $result->fetch_assoc()){
+                    
+                        ?>
+                    
+                            <div class="row border mt-2 py-2 " style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
+                                <div class="col col-8">
+                                    <Strong>Name: </Strong>
+                                    <span><?php echo $rows['s_Name'] ?></span> <br>
+                                    <strong>Contact #: </strong>
+                                    <span><?php echo $rows['sContactNum'] ?></span> <br>
+                                    <strong>Company: </strong>
+                                    <span><?php echo $rows['company_name'] ?></span>
+                                </div>
+                                <div class="col col-2">
+                                    <form action="../Operations/do_editSuppliers.php" method="POST">
+                                        <input type="text" name="editSuppID" hidden value="<?php echo $rows['supplier_ID'] ?>">
+                                        <button type="submit"  name="editBTN"  class="btn btn-success mt-3"><i class="bi bi-pencil-square"></i> EDIT
+                                    </button></form>
+                    
+                                </div>
+                                <div class="col col-2">
+                                    <form action="../Database_Operations/execute_Suppliers.php" method="POST">
+                                        <input type="text" name="deleteSuppID" hidden value="<?php echo $rows['supplier_ID'] ?>">
+                                        <button type="submit" class="btn btn-success mt-3" name="deleteBTN"><i class="bi bi-trash"></i> DELETE</button>
+                                    </form>
+                                </div>
+                            </div>
+                    
+                        <?php
+                                    }
+                                }else{
+                                    echo "
+                                        <div class='row mt-2 py-2 justify-content-center'>
+                                            <div class='col col-5 text-center'>
+                                            <Strong>No Result</Strong>
+                                            </div>
+                                        </div>
+                                        ";
+                                }
+                            } catch(\Exception $e){
+                                die($e);
+                            }
+                        ?>
+                    </div>
                 </div>
             </div>
             

@@ -5,6 +5,32 @@
         // USED BY (User_Inteface/register)-----------------------------------------------------------------------------------------------
         try{
 
+            $fname = $_POST['fname'];
+            $lname = $_POST['lname'];
+            $uname = $_POST['uName'];
+
+            $check_emp = "SELECT cFname, cLname FROM customers WHERE cFname ='$fname' AND cLname='$lname' ";
+            $check_do = $conn->query($check_emp);
+            
+            if($check_do->num_rows > 0){
+                echo "<script>
+                    alert('Name is Already in Use');
+                    window.location.href= 'register_page.php';
+                </script>";
+                exit();
+            }
+
+            $check_emp_usr = "SELECT c_username FROM customers WHERE c_username ='$uname' ";
+            $check_do_usr = $conn->query($check_emp_usr);
+            
+            if($check_do_usr->num_rows > 0){
+                echo "<script>
+                    alert('Username is Already in Use');
+                    window.location.href = 'register_page.php';
+                </script>";
+                exit();
+            }
+
             $sql = "INSERT INTO customers(cFname, cLname, `address`, cContactNum, c_username, c_password) VALUES(?,?,?,?,?,?) ";
             $do = $conn->prepare($sql);
             $do->bind_param("ssssss", $_POST['fname'], $_POST['lname'], $_POST['caddress'], $_POST['cConNum'], $_POST['uName'], $_POST['pw'] );
@@ -99,6 +125,60 @@
                 $conn->close();
             }
     
+        }catch(\Exception $e){
+            $conn->close();
+            die($e);
+        }
+        exit();
+    }
+
+    if(isset($_POST['cSaveBTN'])){
+
+        $id = $_POST['cID'];
+        $fname = $_POST['cFname'];
+        $lname = $_POST['cLname'];
+        $addr = $_POST['addr'];
+        $cont = $_POST['ccont'];
+        $un = $_POST['usrname'];
+        $pw = $_POST['passwrd'];
+
+        try{
+            $sql = "UPDATE customers SET cFname=?, cLname=?, `address`=?, cContactNum=?, c_username=?, c_password=? WHERE customer_ID='$id' ";
+            $do = $conn->prepare($sql);
+            $do->bind_param("ssssss", $fname, $lname, $addr, $cont, $un, $pw);
+
+            $do->execute();
+            $do->close();
+            $conn->close();
+
+            echo "<script>
+                alert('Account Update Successfully');
+                window.location.href='user_account.php';
+            </script>";
+        }catch(\Exception $e){
+            die($e);
+        }
+        exit();
+
+    }
+
+    if(isset($_POST['cDelBTN'])){
+
+        $id = $_POST['cID'];
+
+        try{
+            $sql = "DELETE FROM customers WHERE customer_ID='$id' ";
+            $do = $conn->query($sql);
+
+            $conn->close();
+
+            session_start();
+            session_unset();
+            session_destroy();
+            
+            echo "<script>alert('Deleted Account | Logged Out');
+                    window.location.href='../Logins/User.php';
+                </script>";
         }catch(\Exception $e){
             $conn->close();
             die($e);

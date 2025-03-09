@@ -58,7 +58,7 @@
             <a href="../Admin_Interface/Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
             <a href="../Admin_Interface/ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
+                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
             <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
@@ -84,17 +84,17 @@
 
         </div>
         <div class="view-content-div">
-            <div class="row border w-100 m-0" style="height: 500px;">
+            <div class="row w-100 m-0" style="height: 500px;">
                 <div class="col col-12">
 
                     <form action="../Database_Operations/returnStock.php" method="post">
-                        <div class="row border justify-content-around">
+                        <div class="row justify-content-around">
                             
                             <div class="col col-4 mt-5">
                                             
                                 <label for="selected_item"><h4>Stock ID/Name:</h4></label>
                                 
-                                <select name="selected_item" id="selected_item" class="form-select">
+                                <select name="selected_item" id="selected_item" class="form-select rounded-pill border border-dark">
 
                                     <option value="">None</option>
                                     <?php
@@ -118,7 +118,7 @@
                                         
                                 <label for="selected_supplier"><h4>Supplier ID/Name:</h4></label>
                                 
-                                <select name="selected_supplier" id="selected_supplier" class="form-select">
+                                <select name="selected_supplier" id="selected_supplier" class="form-select rounded-pill border border-dark">
 
                                     <option value="">None</option>
                                     <?php
@@ -143,27 +143,29 @@
 
 
                         </div>
-                        <div class="row border justify-content-center">
+                        <div class="row justify-content-around">
                             <div class="col col-3 mt-3">
                                 <label for="sel_emp"><h4>Employee:</h4></label> <br>
                                 <input type="text" name="selected_employee" hidden value="<?php echo $id ?>">
-                                <input type="text" disabled readonly class="form-control" value="<?php echo $empRow['e_Name'] ?>">
+                                <input type="text" disabled readonly class="form-control rounded-pill border border-dark" value="<?php echo $empRow['e_Name'] ?>">
                             </div>
-                            <div class="col col-1 mt-4">
+                            <div class="col col-2 mt-3">
                                 <label for="retQty"><h4>Qty</h4></label>
-                                <input type="text" name="retQty" required class="form-control">
+                                <input type="text" name="retQty" required class="form-control rounded-pill border border-dark">
                             </div>
 
-                            <div class="col col-2 mt-4">
+                            <div class="col col-2 mt-3">
                                 <label for="retDate"><h4>Return Date:</h4></label>
-                                <input type="date" name="retDate" required class="form-control">
+                                <input type="date" name="retDate" required class="form-control rounded-pill border border-dark">
                             </div>
 
-                            <div class="col col-2 mt-5">
-                                <button type="submit" name="returnBTN" class="btn btn-primary">Return Stock</button>
+                            <div class="w-100"></div>
+
+                            <div class="col col-12 mt-5">
+                                <button type="submit" name="returnBTN" class="btn btn-primary w-100">Return Stock</button>
                             </div>
-                            <div class="col col-2 mt-5">
-                                <a href="../Admin_Interface/ReturnList_Interface.php" class="btn btn-outline-primary">Cancel</a>
+                            <div class="col col-12 mt-2">
+                                <a href="../Admin_Interface/ReturnList_Interface.php" class="btn btn-outline-primary w-100">Cancel</a>
                             </div>
 
                         </div>

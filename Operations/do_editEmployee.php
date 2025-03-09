@@ -43,7 +43,7 @@
             <a href="../Admin_Interface/Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
             <a href="../Admin_Interface/ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
+                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
             <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
@@ -91,11 +91,11 @@
 
                                         <div class="col col-4 mt-2">
                                             <label for="eFname"><h4>First Name:</h4></label> <br>
-                                            <input type="text" name="eFname" id="eFname" class="form-control" required value="<?php echo $row['eFname'] ?>">
+                                            <input type="text" name="eFname" readonly id="eFname" class="form-control" required value="<?php echo $row['eFname'] ?>">
                                         </div>
                                         <div class="col col-4 mt-2">
                                             <label for="eLname"><h4>Last Name:</h4></label> <br>
-                                            <input type="text" name="eLname" id="eLname" class="form-control" required value="<?php echo $row['eLname'] ?>">
+                                            <input type="text" name="eLname" readonly id="eLname" class="form-control" required value="<?php echo $row['eLname'] ?>">
                                         </div>
                                         <div class="col col-4 mt-2">
                                             <label for="eAddress"><h4>Address:</h4></label> <br>
@@ -114,7 +114,7 @@
 
                                         <div class="col mt-4">
                                             <label for="eUname"><h4>Username:</h4></label> <br>
-                                            <input type="text" name="eUname" id="eUname" class="form-control" required value="<?php echo $row['e_username'] ?>">
+                                            <input type="text" name="eUname" readonly id="eUname" class="form-control" required value="<?php echo $row['e_username'] ?>">
                                         </div>
                                         <div class="col mt-4">
                                             <input type="text" value="<?php echo $empID ?>" hidden name="empID">
@@ -125,9 +125,19 @@
                                         
                                         
                                     </div>
-                                    <button class="add btn-danger" name="editEmpBTN" type="submit">Save</button>
-                                    <a href="../Admin_Interface/ItemList_Interface.php" class="cancel btn-dark fs-4">Cancel</a>
-
+                                    <div class="row mt-5">
+                                        <div class="col col-6">
+                                            <button class="btn btn-danger w-100" name="deleteEmpBTN" type="submit">Delete</button>
+                                        </div>
+                                        <div class="col col-6">
+                                            <button class="btn btn-danger w-100" name="editEmpBTN" type="submit">Save</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col col-12">
+                                        <a href="../Admin_Interface/ItemList_Interface.php" class="btn btn-dark fs-4 w-100">Cancel</a>
+                                        </div>
+                                    </div>
                                 </form>
 
                             </div>

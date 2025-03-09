@@ -5,6 +5,20 @@
     if(isset($_POST['addBTN'])){
 
         try{
+            
+            $fname = $_POST['Sfname'];
+            $lname = $_POST['Slname'];
+
+            $check_emp = "SELECT sFname, sLname FROM suppliers WHERE sFname ='$fname' AND sLname='$lname' ";
+            $check_do = $conn->query($check_emp);
+            
+            if($check_do->num_rows > 0){
+                echo "<script>
+                    alert('Name is Already in Use');
+                    window.location.href = '../Operations/do_addSuppliers.php';
+                </script>";
+                exit();
+            }
 
             $sql = "INSERT INTO suppliers(sFname,sLname,sContactNum ,company_name) VALUES(?,?,?,?)";
             $do = $conn->prepare($sql);

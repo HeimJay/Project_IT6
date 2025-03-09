@@ -47,12 +47,16 @@
                     </div>
 
                     <div class="col col-10 mt-3">
-                        <a href="history_order.php" class="btn btn-primary w-100">View Order/s History</a>
+                        <a href="user_account.php" class="rounded-pill btn btn-danger w-100">Account</a>
+                    </div>
+
+                    <div class="col col-10 mt-3">
+                        <a href="history_order.php" class="rounded-pill btn btn-danger w-100">View Order/s History</a>
                     </div>
 
                     <div class="col col-10 mt-3">
                         <form action="function.php" method="POST">
-                            <button type="submit" name="signoutBTN" class="btn btn-primary w-100">Sign out</button>
+                            <button type="submit" name="signoutBTN" class="rounded-pill btn btn-danger w-100">Sign out</button>
 
                         </form>
                         

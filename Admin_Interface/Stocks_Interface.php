@@ -60,7 +60,7 @@
             <a href="Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
             <a href="ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
+                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
             <a href="Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
@@ -85,13 +85,13 @@
 
                 <form action="" method="post">
 
-                    <div class="row border ms-5 w-100" style="height: 70px;">
+                    <div class="row ms-5 mt-3 justify-content-end align-items-center" style="height: 70px; width: 800px;">
 
-                        <div class="col col-8 mt-3" >
-                           <input type="text" name="sSearch" placeholder="Search" class="form-control">
+                        <div class="col col-8" >
+                           <input type="text" name="sSearch" placeholder="Search" class="form-control rounded-pill border border-dark">
                         </div>
-                        <div class="col col-2 mt-3">
-                            <button type="submit" name="stockSearchBTN" class="btn btn-success">Search</button>
+                        <div class="col col-1 border" style="padding-left: 8px; padding-top: 5px; padding-bottom: 5px; border-radius:10px; background-color:white;">
+                            <button type="submit" name="stockSearchBTN" class="btn btn-danger"><i class="bi bi-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -101,7 +101,7 @@
 
         <!-- FUNCTION TOOLS -->
 
-        <div class="row border justify-content-around align-items-center text-center function-buttons" style="height: 50px;">
+        <div class="row justify-content-around align-items-center text-center function-buttons" style="height: 50px;">
             <div class="col col-5 p-0 m-0" style="background-color: rgb(216, 79, 79); height:40px; border-radius:5px;">
                 <a href="../Operations/do_stockIn.php" class="btn btn-danger" style="height: 40px; width:210px;">Stock In</a>
                 
@@ -119,7 +119,7 @@
         <div class="view-content-div">
             <!-- Content goes here -->
 
-            <div class="row  w-100" style="height: 490px;">
+            <div class="row w-100" style="height: 490px;">
                 
                 <div class="col col-12">
                     <!--HEADER-->

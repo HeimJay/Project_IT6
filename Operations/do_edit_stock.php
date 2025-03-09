@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard | Add Stock</title>
+    <title>Admin Dashboard | Edit Stock</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         @font-face {
@@ -184,7 +184,7 @@
             <a href="../Admin_Interface/Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
             <a href="../Admin_Interface/ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
+                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
             <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
@@ -225,7 +225,7 @@
                             $row = $do->fetch_assoc();
                         
                         ?>
-                        <div class="row border justify-content-center text-center align-items-center " style="height: 70px;">
+                        <div class="row justify-content-center text-center align-items-center " style="height: 70px;">
                             <div class="col col-9" style="background-color: rgb(216, 79, 79); border-radius:10px; color:white;">
                                 
                                 <h1>EDIT: <?php echo $row['item_name'] ?></h1>
@@ -236,7 +236,7 @@
                             <div class="row mt-3">
                                 <div class="col">
                                     <label for="iname"><h4>Item Name:</h4></label>
-                                    <input type="text" name="iname" id="iname" class="form-control w-75" value="<?php echo $row['item_name'] ?>">
+                                    <input type="text" name="iname" id="iname" readonly class="form-control w-75" value="<?php echo $row['item_name'] ?>">
                                 </div>
                                 <div class="col col-4">
                                     <label for="sQty"><h4>In Stock:</h4></label>
@@ -256,9 +256,13 @@
                                 </div>
                             </div>
                             <div class="row mt-5">
-                                <div class="col">
+                                <div class="col col-6">
+                                    <input type="text" name="delete_id" hidden value="<?php echo $row['stock_ID'] ?>">
+                                    <button type="submit" class="btn btn-danger w-100" name="deleteStockBTN">Delete</button>
+                                </div>
+                                <div class="col col-6">
                                     <input type="text" name="edit_id" hidden value="<?php echo $row['stock_ID'] ?>">
-                                    <button type="submit" class="btn btn-primary w-100" name="editStockBTN">Save</button>
+                                    <button type="submit" class="btn btn-danger w-100" name="editStockBTN">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -266,7 +270,7 @@
                         <div class="row mt-3">
                             <div class="col col-12">
                             
-                                <a href="../Admin_Interface/Stocks_Interface.php" class="btn btn-outline-primary w-100">Cancel</a>
+                                <a href="../Admin_Interface/Stocks_Interface.php" class="btn btn-dark w-100" style="height: 50px; font-family: 'Aileron', sans-serif; font-size: 23px;">Cancel</a>
                             </div>
                         </div>
 

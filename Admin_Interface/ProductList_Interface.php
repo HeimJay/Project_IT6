@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard | Orders List</title>
-   
+    
     <link rel="stylesheet" href="style_adminInterface.css">
    
     <style>
@@ -68,27 +68,28 @@
             <div class="dashboard-header">
                 <img src="../Images/procurement.png" class="p-1" style="width: 22%; height: auto" alt="dashboard.png">
                 <h1>Orders List</h1>
+                
             </div>
 
         </div>
         <div class="view-content-div">
-            <div class="row w-100 border m-0" style="height: 500px;">
+            <div class="row w-100 m-0" style="height: 500px;">
                 <div class="col col-12">
 
                     <form action="" method="post">
-                        <div class="row border mx-0 w-100 align-items-center justify-content-center " style="height: 70px;">
+                        <div class="row mx-0 align-items-center justify-content-center " style="height: 70px;">
  
-                            <div class="col col-5 mt-2 p-1 border" style="background-color: rgb(216, 79, 79); border-radius:10px;">
-                                <input type="text" name="sSearch" placeholder="Search" class="form-control">
+                            <div class="col col-5 mt-2 p-1 border" style="background-color: rgb(216, 79, 79); border-radius:50px;">
+                                <input type="text" name="sSearch" placeholder="Search" class="form-control rounded-pill border border-dark">
                             </div>
-                            <div class="col col-1 mt-2 p-1 border" style="background-color: rgb(216, 79, 79); border-radius:10px;">
-                                <button type="submit" name="prodSearchBTN" class="btn btn-success w-100">Search</button>
+                            <div class="col col-1 mt-2 text-center border" style="background-color: rgb(216, 79, 79); border-radius:10px; padding-left: 8px; padding-top: 5px; padding-bottom: 5px;">
+                                <button type="submit" name="prodSearchBTN" class="btn btn-waring"><i class="bi bi-search"></i></button>
                             </div>
     
                         </div>
                     </form>
 
-                    <div class="row border mt-1" style="height: 415px; overflow:auto;">
+                    <div class="row mt-1" style="height: 415px; overflow:auto;">
                         <div class="col col-12">
 
                             <?php

@@ -13,6 +13,28 @@
             $uname = $_POST['eUname'];
             $passwrd = $_POST['ePass'];
 
+            $check_emp = "SELECT eFname, eLname FROM employees WHERE eFname ='$fname' AND eLname='$lname' ";
+            $check_do = $conn->query($check_emp);
+            
+            if($check_do->num_rows > 0){
+                echo "<script>
+                    alert('Name is Already in Use');
+                    window.location.href = '../Operations/do_addEmployee.php';
+                </script>";
+                exit();
+            }
+
+            $check_emp_usr = "SELECT e_username FROM employees WHERE e_username ='$uname' ";
+            $check_do_usr = $conn->query($check_emp_usr);
+            
+            if($check_do_usr->num_rows > 0){
+                echo "<script>
+                    alert('Username is Already in Use');
+                    window.location.href = '../Operations/do_addEmployee.php';
+                </script>";
+                exit();
+            }
+
             $sql = "INSERT INTO employees(eFname, eLname, emp_position, eAddress, eContactNum, e_username, e_password) VALUES (?,?,?,?,?,?,?) ";
             $do = $conn->prepare($sql);
             $do->bind_param("sssssss", $fname, $lname, $position, $address, $cont, $uname, $passwrd);

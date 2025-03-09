@@ -29,7 +29,7 @@
             <a href="Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
             <a href="ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Product List</a>
+                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
             <a href="Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
                 <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
@@ -60,14 +60,14 @@
                 <div class="col col-12">
 
                     <form action="" method="post"> 
-                        <div class="row justify-content-end ">
-                            <div class="col col-5 mt-2" >
-                               <input type="text" name="sSearch" placeholder="Search" class="form-control">
+                        <div class="row justify-content-end align-items-center" style="height: 70px;">
+                            <div class="col col-5 mt-2 p-1" style="background-color: rgb(216, 79, 79); border-radius:50px;" >
+                               <input type="text" name="sSearch" placeholder="Search" class="form-control rounded-pill border border-dark">
                             </div>
-                            <div class="col col-2 mt-2">
-                                <button type="submit" name="empSearchBTN" class="btn btn-success">Search</button>
+                            <div class="col col-1 mt-2 text-center border" style="background-color: rgb(216, 79, 79); border-radius:10px; padding-top:5px; padding-bottom:5px;">
+                                <button type="submit" name="empSearchBTN" class="btn btn-danger"><i class="bi bi-search"></i></button>
                             </div>
-                            <div class="col col-3">
+                            <div class="col col-3 text-center">
                         
                                 <a href="../Operations/do_addEmployee.php" class="btn btn-danger">Add Employee</a>
                         
@@ -75,9 +75,9 @@
                         </div>
                     </form>
 
-                    <div class="row">
+                    <div class="row m-1" style="overflow: auto; height:430px;">
 
-                        <div class="col col-12 mt-4" style="overflow: auto;">
+                        <div class="col col-12 mt-4" >
 
                             <?php 
                             
