@@ -85,7 +85,7 @@
 
                 <form action="" method="post">
 
-                    <div class="row ms-5 w-100" style="height: 70px;">
+                    <div class="row border ms-5 w-100" style="height: 70px;">
 
                         <div class="col col-8 mt-3" >
                            <input type="text" name="sSearch" placeholder="Search" class="form-control">
@@ -101,7 +101,7 @@
 
         <!-- FUNCTION TOOLS -->
 
-        <div class="row justify-content-around align-items-center text-center function-buttons" style="height: 50px;">
+        <div class="row border justify-content-around align-items-center text-center function-buttons" style="height: 50px;">
             <div class="col col-5 p-0 m-0" style="background-color: rgb(216, 79, 79); height:40px; border-radius:5px;">
                 <a href="../Operations/do_stockIn.php" class="btn btn-danger" style="height: 40px; width:210px;">Stock In</a>
                 
