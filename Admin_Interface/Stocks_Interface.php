@@ -80,7 +80,7 @@
         </div>
         <div class="main-content-div mt-3">
             <div class="dashboard-header">
-                <img src="../Images/ready-stock.png" class="p-1" style="width: 12%; height: auto" alt="dashboard.png">
+                <img src="../Images/ready-stock.png" class="p-1" style="width: 7%; height: auto" alt="dashboard.png">
                 <h1>Stocks</h1>
 
                 <form action="" method="post">
@@ -125,23 +125,23 @@
                     <!--HEADER-->
                     <div class="row text-center align-items-center" style="background-color:rgb(216, 79, 79); border-radius:10px; color: white; height:70px;">
                         <div class="col col-2">
-                            <h4>Item Name:</h4>
+                            <h4>Item Name</h4>
                         </div>
                         <div class="col col-2">
-                            <h4>Category:</h4>
+                            <h4>Category</h4>
                         </div>
                         <div class="col col-2">
-                            <h4>Unit Price:</h4>
+                            <h4>Unit Price</h4>
                         </div>
                         <div class="col col-2">
-                            <h4>Price:</h4>
+                            <h4>Price</h4>
                         </div>
                         <div class="col col-2">
-                            <h4>In Stock:</h4>
+                            <h4>In Stock</h4>
                         </div>
                         
                         <div class="col col-2">
-                            <h4>Action:</h4>
+                            <h4>Action</h4>
                         </div>
                     </div>
 
@@ -191,10 +191,10 @@
                                                 <span><?php echo $rows['category'] ?></span>
                                             </div>
                                             <div class="col col-2">
-                                                <span><?php echo $rows['price'] ?></span>
+                                                <span>₱ <?php echo $rows['price'] ?></span>
                                             </div>
                                             <div class="col col-2">
-                                                <span><?php echo $rows['selling_price'] ?></span>
+                                                <span>₱ <?php echo $rows['selling_price'] ?></span>
                                             </div>
                                             <div class="col col-2">
                                                 <span><?php echo $rows['stock_quantity'] ?></span>

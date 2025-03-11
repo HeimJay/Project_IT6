@@ -51,6 +51,10 @@
                     </div>
 
                     <div class="col col-10 mt-3">
+                        <a href="order_interface.php" class="rounded-pill btn btn-danger w-100">Order</a>
+                    </div>
+
+                    <div class="col col-10 mt-3">
                         <a href="history_order.php" class="rounded-pill btn btn-danger w-100">View Order/s History</a>
                     </div>
 
@@ -131,10 +135,11 @@
                                             if(isset($_POST['stockSearch'])){
                                                 $sValue = $_POST['sSearch'];
 
-                                                $sql = "SELECT * FROM stocks WHERE item_name LIKE '%$sValue%' OR
-                                                                                    category LIKE '%$sValue%'";
+                                                $sql = "SELECT * FROM stocks WHERE CONCAT(item_name LIKE '%$sValue%' OR
+                                                                                    category LIKE '%$sValue%')
+                                                                                    AND stock_quantity > 0";
                                             }else{
-                                                $sql = "SELECT * FROM stocks";
+                                                $sql = "SELECT * FROM stocks WHERE stock_quantity > 0";
                                             }
 
                                             try{

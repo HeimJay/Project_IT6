@@ -46,17 +46,29 @@
                     <h5 class="text-center" style="margin-left: 10px;">3G Tires Parts and Vulcanizing Shop</h5>
                 </div>
 
-                <div class="row border justify-content-center">
+                <div class="row justify-content-center">
                     <div class="col col-10 border mt-3 py-2">
                     <span><h4 style="color: white;">Welcome, <?php echo $custName ?></h4></span>
                     </div>
 
-                    <div class="col col-10 border mt-3">
-                        <a href="history_order.php" class="btn btn-primary w-100">View Order/s History</a>
+                    <div class="col col-10 mt-3">
+                        <a href="user_account.php" class="rounded-pill btn btn-danger w-100">Account</a>
                     </div>
 
-                    <div class="col col-10 border mt-3">
-                        <a href="#" class="btn btn-primary w-100">Sign out</a>
+                    <div class="col col-10 mt-3">
+                        <a href="order_interface.php" class="rounded-pill btn btn-danger w-100">Order</a>
+                    </div>
+
+                    <div class="col col-10 mt-3">
+                        <a href="history_order.php" class="rounded-pill btn btn-danger w-100">View Order/s History</a>
+                    </div>
+
+                    <div class="col col-10 mt-3">
+                        <form action="function.php" method="POST">
+                            <button type="submit" name="signoutBTN" class="rounded-pill btn btn-danger w-100">Sign out</button>
+
+                        </form>
+                        
                     </div>
 
                 </div>

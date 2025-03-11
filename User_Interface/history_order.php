@@ -53,6 +53,10 @@
                     </div>
 
                     <div class="col col-10 mt-3">
+                        <a href="order_interface.php" class="rounded-pill btn btn-danger w-100">Order</a>
+                    </div>
+
+                    <div class="col col-10 mt-3">
                         <a href="history_order.php" class="rounded-pill btn btn-danger w-100">View Order/s History</a>
                     </div>
 

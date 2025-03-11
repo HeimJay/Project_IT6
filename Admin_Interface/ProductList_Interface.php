@@ -131,11 +131,11 @@
                                     </div>
                                     <div class="col col-6">
                                         <Strong>Unit Price: </Strong>
-                                        <span><?php echo $rows['selling_price'] ?></span> <br>
+                                        <span>₱ <?php echo $rows['selling_price'] ?></span> <br>
                                         <strong>Qty: </strong>
                                         <span><?php echo $rows['order_quantity'] ?></span> <br>
                                         <strong>Total: </strong>
-                                        <span><?php echo $rows['total_price'] ?></span> <br>
+                                        <span>₱ <?php echo $rows['total_price'] ?></span> <br>
                                         <Strong>Date: </Strong>
                                         <span><?php echo $rows['order_date'] ?></span>
                                     </div>

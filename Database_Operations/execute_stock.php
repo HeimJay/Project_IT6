@@ -92,7 +92,11 @@
         }catch(\Exception $e){
 
             $conn->close();
-            die($e);
+            
+            echo "<script>
+            alert('Cannot Delete Item | Foreign Key Constraint Fails');
+            window.location.href = '../Admin_Interface/Stocks_Interface.php';
+            </script>";
         }
         exit();
 

@@ -240,7 +240,7 @@
                                 </div>
                                 <div class="col col-4">
                                     <label for="sQty"><h4>In Stock:</h4></label>
-                                    <input type="text" name="sQty" id="sQty" class="form-control w-75" value="<?php echo $row['stock_quantity'] ?>">
+                                    <input type="text" name="sQty" readonly id="sQty" class="form-control w-75" value="<?php echo $row['stock_quantity'] ?>">
                                 </div>
                             
                             

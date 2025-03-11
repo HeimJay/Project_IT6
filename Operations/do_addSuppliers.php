@@ -87,8 +87,8 @@
                         </div>
                         <div class="row ">
                             <div class="col col-12">
-                                <button type="submit" name="addBTN" class="btn btn-primary w-100 mt-3">Save</button>
-                                <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-outline-primary w-100 mt-3">Cancel</a>
+                                <button type="submit" name="addBTN" class="btn btn-danger w-100 mt-3">Save</button>
+                                <a href="../Admin_Interface/Suppliers_Interface.php" class="btn btn-dark w-100 mt-3">Cancel</a>
                             </div>
                         </div>
                     </form>

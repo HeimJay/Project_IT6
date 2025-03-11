@@ -88,9 +88,9 @@
                 <div class="col col-12">
 
                     <form action="../Database_Operations/returnStock.php" method="post">
-                        <div class="row justify-content-around">
+                        <div class="row justify-content-center">
                             
-                            <div class="col col-4 mt-5">
+                            <div class="col col-4 mt-5 p-2 border" style="background-color: rgb(216, 79, 79); border-radius:10px;">
                                             
                                 <label for="selected_item"><h4>Stock ID/Name:</h4></label>
                                 
@@ -114,7 +114,7 @@
                                 </select>
                             </div>
 
-                            <div class="col col-4 mt-5">
+                            <div class="col col-4 mt-5 p-2 border" style="background-color: rgb(216, 79, 79); border-radius:10px;">
                                         
                                 <label for="selected_supplier"><h4>Supplier ID/Name:</h4></label>
                                 
@@ -143,29 +143,29 @@
 
 
                         </div>
-                        <div class="row justify-content-around">
-                            <div class="col col-3 mt-3">
+                        <div class="row justify-content-center">
+                            <div class="col col-3 mt-3 p-2 border" style="background-color: rgb(216, 79, 79); border-radius:10px;">
                                 <label for="sel_emp"><h4>Employee:</h4></label> <br>
                                 <input type="text" name="selected_employee" hidden value="<?php echo $id ?>">
                                 <input type="text" disabled readonly class="form-control rounded-pill border border-dark" value="<?php echo $empRow['e_Name'] ?>">
                             </div>
-                            <div class="col col-2 mt-3">
+                            <div class="col col-2 mt-3 p-2 border" style="background-color: rgb(216, 79, 79); border-radius:10px;">
                                 <label for="retQty"><h4>Qty</h4></label>
                                 <input type="text" name="retQty" required class="form-control rounded-pill border border-dark">
                             </div>
 
-                            <div class="col col-2 mt-3">
+                            <div class="col col-3 mt-3 p-2 border" style="background-color: rgb(216, 79, 79); border-radius:10px;">
                                 <label for="retDate"><h4>Return Date:</h4></label>
                                 <input type="date" name="retDate" required class="form-control rounded-pill border border-dark">
                             </div>
 
                             <div class="w-100"></div>
 
-                            <div class="col col-12 mt-5">
-                                <button type="submit" name="returnBTN" class="btn btn-primary w-100">Return Stock</button>
+                            <div class="col col-8 mt-5">
+                                <button type="submit" name="returnBTN" class="btn btn-danger w-100">Return Stock</button>
                             </div>
-                            <div class="col col-12 mt-2">
-                                <a href="../Admin_Interface/ReturnList_Interface.php" class="btn btn-outline-primary w-100">Cancel</a>
+                            <div class="col col-8 mt-2">
+                                <a href="../Admin_Interface/ReturnList_Interface.php" class="btn btn-dark w-100">Cancel</a>
                             </div>
 
                         </div>

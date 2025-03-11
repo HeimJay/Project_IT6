@@ -67,12 +67,12 @@
 
         </div>
         <div class="view-content-div">
-            <div class="row border ms-0 justify-content-around" style="height: 530px; width: 1150px;">
+            <div class="row ms-0 justify-content-around" style="height: 530px; width: 1150px;">
                 <div class="col col-6">
 
 
                     
-                    <div class="row border p-1" style="height: 265px;">
+                    <div class="row border p-1 m-1" style="height: 265px; background-color:white; border-radius:10px;">
 
                         <div class="col col-12">
                             <div class="row text-center align-items-center justify-content-center" style="height: 40px;">
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
 
-                            <div class="row border" style="height: 220px; overflow:auto;">
+                            <div class="row" style="height: 220px; overflow:auto;">
                                 <div class="col col-12">
 
                                     <?php
@@ -142,7 +142,7 @@
                         </div>
                         
                     </div>
-                    <div class="row border p-1" style="height: 265px;">
+                    <div class="row p-1 m-1" style="height: 265px; background-color:white; border-radius:10px;">
 
                         <div class="col col-12">
                             <div class="row text-center align-items-center justify-content-center" style="height: 40px;">
@@ -151,7 +151,7 @@
                                 </div>
                             </div>
 
-                            <div class="row border" style="height: 220px; overflow:auto;">
+                            <div class="row" style="height: 220px; overflow:auto;">
                                 <div class="col col-12">
 
                                     <?php
@@ -233,13 +233,13 @@
                 </div>
                 <div class="col col-6">
 
-                    <div class="row border text-center align-items-center justify-content-center" style="height: 70px;">
+                    <div class="row border text-center align-items-center justify-content-center m-1" style="height: 70px; background-color:white; border-radius:10px;">
                         <div class="col col-5 border" style="height: 50px; background-color: rgb(216, 79, 79); border-radius:10px;">
                             <h4 style="padding-top: 10px; color:white;">Low Stock Alert</h4>
                         </div>
                     </div>
 
-                    <div class="row border p-1" style="height: 460px; overflow:auto;">
+                    <div class="row border p-1 m-1" style="height: 460px; overflow:auto; background-color:white; border-radius:10px;">
                         <div class="col col-12">
 
                             <?php
@@ -247,7 +247,7 @@
 
 
                                 try{
-                                    $sql = "SELECT * FROM stocks WHERE stock_quantity < 10";
+                                    $sql = "SELECT * FROM stocks WHERE stock_quantity < 11";
                                     $do = $conn->query($sql);
 
                                     if($do->num_rows > 0){
