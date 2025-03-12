@@ -25,199 +25,117 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard</title>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="userStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .item-row {
+            background-color: white; /* Change this to your desired background color */
+            border-radius: 10px;
+            color: black; /* Change this to your desired text color */
+            margin-bottom: 10px; /* Add some space between rows */
+        }
+    </style>
 </head>
 
 <body>
-
     <div class="container-fluid vh-100">
         <div class="row h-100">
-
-            <!-- SIDE PANEL -->
-            <div class="col col-3" style="background-color: rgb(216, 79, 79);">
-                <div class="logo-container">
-                    <img src="../Images/Vulcanizing.png" style="width: 90px; height: 70px;" alt="Vulcanizing.png">
-                    <h5 class="text-center" style="margin-left: 10px;">3G Tires Parts and Vulcanizing Shop</h5>
+            <!-- Sidebar -->
+            <div class="col-3 bg-danger text-white p-3">
+                <div class="text-center">
+                    <img src="../Images/Vulcanizing.png" class="img-fluid rounded-circle mb-2" style="width: 70%;">
+                    <h5>3G Tires Parts and Vulcanizing Shop</h5>
                 </div>
 
-                <div class="row justify-content-center">
-                    <div class="col col-10 border mt-3 py-2" style="border-radius:10px;">
-                        <span><h4 style="color: white;">Welcome, <?php echo $row['cFname'] ?></h4></span>
+                <div class="mt-3">
+                    <div class="border p-1 rounded text-center">
+                        <h4>Welcome, <?php echo $row['cFname'] ?></h4>
                     </div>
 
-                    <div class="col col-10 mt-3">
-                        <a href="user_account.php" class="rounded-pill btn btn-danger w-100">Account</a>
+                    <div class="mt-3">
+                        <a href="user_account.php" class="nav-link text-white rounded-pill btn btn-outline-dark">Account</a>
                     </div>
 
-                    <div class="col col-10 mt-3">
-                        <a href="order_interface.php" class="rounded-pill btn btn-danger w-100">Order</a>
+                    <div class="mt-3">
+                        <a href="history_order.php" class="nav-link text-white rounded-pill btn btn-outline-dark">View Order/s History</a>
                     </div>
 
-                    <div class="col col-10 mt-3">
-                        <a href="history_order.php" class="rounded-pill btn btn-danger w-100">View Order/s History</a>
-                    </div>
-
-                    <div class="col col-10 mt-3">
+                    <div class="mt-3">
                         <form action="function.php" method="POST">
-                            <button type="submit" name="signoutBTN" class="rounded-pill btn btn-danger w-100">Sign out</button>
-
+                            <button type="submit" name="signoutBTN" class="btn btn-dark w-100">Sign out</button>
                         </form>
-                        
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- PANEL -->
-            <div class="col col-9">
-
-                <!-- HEADER -->
-                <form action="order_interface.php" method="post">
-                    <div class="row  mt-3 mx-4 justify-content-center" style="height: 70px; background-color: rgb(216, 79, 79); border-radius:10px;">
-                        <div class="col col-3 " style="color:white; height: 70px;" >
-                            <h2 class="pt-3">Item List:</h2>
-                        </div>
-                        <div class="col col-5 " style="color:white; height: 70px;" >
-                            <input type="text" name="sSearch" class="form-control mt-3">
-                    
-                        </div>
-                        <div class="col col-3  pt-3" style="color:white; height: 70px;" >
-                    
-                            <button class="btn btn-success" type="submit" name="stockSearch">Search</button>
-                        </div>
+            <!-- Main Content -->
+            <div class="col-9 p-4">
+                <form action="order_interface.php" method="post" class="d-flex justify-content-between align-items-center mb-4">
+                    <h1><img src="../Images/document.png" width="40"> Item List:</h1>
+                    <div class="d-flex">
+                        <input type="text" name="sSearch" class="form-control me-2">
+                        <button class="btn btn-success" type="submit" name="stockSearch">Search</button>
                     </div>
                 </form>
 
-                <!-- FUNCTIONS/TOOLS -->
-                <div class="row mx-4 mt-1" style="height: 50px;">
-                    <div class="col">
-                        
+                <div class="card border-danger">
+                    <div class="card-header bg-danger text-white text-center">
+                        <h5>Item List</h5>
                     </div>
-                </div>
+                    <div class="card-body overflow-auto" style="max-height: 400px;">
+                        <div class="row text-center align-items-center mb-2" style="background-color:rgb(216, 79, 79); border-radius:10px; color: white;">
+                            <div class="col-3"><h4>Item Name:</h4></div>
+                            <div class="col-2"><h4>Category:</h4></div>
+                            <div class="col-2"><h4>Price:</h4></div>
+                            <div class="col-2"><h4>In Stock:</h4></div>
+                            <div class="col-3"><h4>Action:</h4></div>
+                        </div>
 
-                <!-- BODY -->
-                <div class="row mx-4 mt-2" style="height: 530px;">
-                    <div class="col col-12">
+                        <?php
+                            $sql;
 
-                        <!-- FOR STOCKS -->
-                        <div class="row text-center align-items-center" style="background-color:rgb(216, 79, 79); border-radius:10px; color: white; height:50px;">
-                            <div class="col col-3">
-                                <h4 class="pt-2">Item Name:</h4>
-                            </div>
-                            <div class="col col-2">
-                                <h4 class="pt-2">Category:</h4>
-                            </div>
-                            
-                            <div class="col col-2">
-                                <h4 class="pt-2">Price:</h4>
-                            </div>
-                            <div class="col col-2">
-                                <h4 class="pt-2">In Stock:</h4>
-                            </div>
-                            
-                            <div class="col col-3">
-                                <h4 class="pt-2">Action:</h4>
-                            </div>
+                            if(isset($_POST['stockSearch'])){
+                                $sValue = $_POST['sSearch'];
 
+                                $sql = "SELECT * FROM stocks WHERE item_name LIKE '%$sValue%' OR category LIKE '%$sValue%'";
+                            }else{
+                                $sql = "SELECT * FROM stocks";
+                            }
 
-                            <div class="col col-12 mt-4">
-                    
-                                <!--BODY-->
-                                <div class="row " style="height: 400px; overflow:auto;">
-                                    <div class="col col-12">
+                            try{
+                                $do = $conn->query($sql);
 
-                                        <?php
-                                            
-                                            $sql;
-
-                                            if(isset($_POST['stockSearch'])){
-                                                $sValue = $_POST['sSearch'];
-
-                                                $sql = "SELECT * FROM stocks WHERE CONCAT(item_name LIKE '%$sValue%' OR
-                                                                                    category LIKE '%$sValue%')
-                                                                                    AND stock_quantity > 0";
-                                            }else{
-                                                $sql = "SELECT * FROM stocks WHERE stock_quantity > 0";
-                                            }
-
-                                            try{
-                                                
-                                                $do = $conn->query($sql);
-
-                                                if($do->num_rows > 0){
-                                                    while($rows = $do->fetch_assoc()){
-
-
-                                        ?>
-
-                                            <form action="place_order.php" method="POST">
-                                                <div class="row text-center align-items-center mt-2" style="height:50px; background-color:rgb(216, 79, 79); border-radius: 10px; color:white; ">
-                                                    <div class="col col-3">
-                                                        <span><?php echo $rows['item_name'] ?></span>
-                                                    </div>
-                                                    <div class="col col-2">
-                                                        <span><?php echo $rows['category'] ?></span>
-                                                    </div>
-                                                    <div class="col col-2">
-                                                        <span>₱ <?php echo $rows['selling_price'] ?></span>
-                                                    </div>
-                                                    <div class="col col-2">
-                                                        <span><?php echo $rows['stock_quantity'] ?></span>
-                                                    </div>
-
-                                                    <div class="col col-3">
-                                                        <input type="text" hidden name="id" value="<?php echo $rows['stock_ID'] ?>">
-                                                        <button type="submit" class="btn btn-success" style="width: 45px; height: 45px;"><i class="bi bi-cart-dash"></i></button>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </form>
-
-
-                                        <?php
-                                        
-                                                    }
-                                                } else{
-                                                    echo "
-                                                        <div class='row mt-2 py-2 justify-content-center'>
-                                                            <div class='col col-5 text-center'>
-                                                            <Strong>No Result</Strong>
-                                                            </div>
-                                                        </div>
-                                                        ";
-                                                }
-
-                                            }catch(\Exception $e){
-                                                die($e);
-                                            }
-                                        
-                                        ?>
-
-
+                                if($do->num_rows > 0){
+                                    while($rows = $do->fetch_assoc()){
+                        ?>
+                            <form action="place_order.php" method="POST">
+                                <div class="row text-center align-items-center mb-2 item-row">
+                                    <div class="col-3"><?php echo $rows['item_name'] ?></div>
+                                    <div class="col-2"><?php echo $rows['category'] ?></div>
+                                    <div class="col-2">₱ <?php echo $rows['selling_price'] ?></div>
+                                    <div class="col-2"><?php echo $rows['stock_quantity'] ?></div>
+                                    <div class="col-3">
+                                        <input type="text" hidden name="id" value="<?php echo $rows['stock_ID'] ?>">
+                                        <button type="submit" class="btn btn-success"><i class="bi bi-cart-dash"></i></button>
                                     </div>
                                 </div>
-                
-
-
-                            </div>
-
-
-
-
-
-                        </div>
+                            </form>
+                        <?php
+                                    }
+                                } else{
+                                    echo "<div class='text-center text-danger'><strong>No Result</strong></div>";
+                                }
+                            }catch(\Exception $e){
+                                die($e);
+                            }
+                        ?>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 </body>
-
 
 </html>
