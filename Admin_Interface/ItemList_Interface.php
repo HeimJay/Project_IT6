@@ -1,8 +1,6 @@
 <?php
     include "../Database/db_connect.php";
     include "../Database/header.html";
-
-
 ?>
 
 <!DOCTYPE html>
@@ -11,146 +9,125 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard | Item List</title>
-    
+    <title>Admin Dashboard | Employees</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style_adminInterface.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
-    <div class="full-page-div">
-        <div class="side-page-div">
-            <div class="logo-container">
-                <img src="../Images/Vulcanizing.png" style="width: 60%; height: auto;" alt="Vulcanizing.png">
-                <h5 class="text-center" style="margin-left: 10px;">3G Tires Parts and Vulcanizing Shop</h5>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="bg-danger text-white vh-100 p-3" style="width: 250px;">
+            <div class="text-center">
+                <img src="../Images/Vulcanizing.png" class="img-fluid rounded-circle mb-2" style="width: 70%;">
+                <h5>3G Tires & Vulcanizing Shop</h5>
             </div>
-            <!--Dashboard-->
-            <a href="Dashboard_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/dashboard.png" class="p-1" style="width: 20%; height: auto" alt="dashboard.png">Dashboard</a>
-            <a href="Stocks_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/ready-stock.png" class="p-1" style="width: 25%; height: auto" alt="ready-stock.png">Stocks</a>
-            <a href="ProductList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/procurement.png" class="p-1" style="width: 25%; height: auto" alt="procurement.png">Orders List</a>
-            <a href="Suppliers_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/wholesale.png" class="p-1" style="width: 23%; height: auto" alt="wholesale.png">Suppliers</a>
 
-            <!--Maintenance-->
-            <h3 class="m-5 mb-0">Maintenance</h3>
-            <a href="ItemList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/list-items.png" class="p-1" style="width: 20%; height: auto" alt="list-items.png">Employees</a>
-            <a href="ReturnList_Interface.php" class="btn btn-danger rounded-pill mx-auto d-flex align-items-center justify-content-center mt-3" style="width: 85%; height: 42px;">
-                <img src="../Images/document.png" class="p-1" style="width: 25%; height: auto" alt="document.png">Return List</a>
+            <ul class="nav flex-column mt-3">
+                <li class="nav-item">
+                    <a href="Dashboard_Interface.php" class="nav-link text-white rounded-pill btn btn-outline-dark">
+                        <img src="../Images/dashboard.png" width="25">Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="Stocks_Interface.php" class="nav-link text-white rounded-pill btn btn-outline-dark">
+                        <img src="../Images/ready-stock.png" width="25"> Stocks
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="ProductList_Interface.php" class="nav-link text-white rounded-pill btn btn-outline-dark">
+                        <img src="../Images/procurement.png" width="25"> Orders List
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="Suppliers_Interface.php" class="nav-link text-white rounded-pill btn btn-outline-dark">
+                        <img src="../Images/wholesale.png" width="25"> Suppliers
+                    </a>
+                </li>
+            </ul>
 
-            <!--Sign-Out-->
-            <form action="../User_Interface/function.php" method="post">
-                <button type="submit" name="signoutBTN" class="btn btn-dark rounded-pill mx-auto d-flex align-items-center justify-content-center mt-5" style="width: 65%; height: 42px;">
-                    <img src="../Images/logout.png" style="width: 20%; height: auto" alt="logout.png">Sign Out
+            <hr class="text-white">
+
+            <h6 class="text-center">Maintenance</h6>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="ItemList_Interface.php" class="nav-link text-white rounded-pill btn btn-outline-dark">
+                        <img src="../Images/list-items.png" width="25"> Employees
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="ReturnList_Interface.php" class="nav-link text-white rounded-pill btn btn-outline-dark">
+                        <img src="../Images/document.png" width="25"> Return List
+                    </a>
+                </li>
+            </ul>
+
+            <form action="../User_Interface/function.php" method="post" class="mt-3">
+                <button type="submit" name="signoutBTN" class="btn btn-dark w-100">
+                    <img src="../Images/logout.png" width="25"> Sign Out
                 </button>
             </form>
-        </div>
-        <div class="main-content-div mt-3">
-            <div class="dashboard-header">
-                <img src="../Images/list-items.png" class="p-1" style="width: 10%; height: auto" alt="dashboard.png">
-                <h1>Employees</h1>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1><img src="../Images/list-items.png" width="40"> Employees</h1>
+                <form action="" method="post" class="d-flex">
+                    <input type="text" name="sSearch" placeholder="Search" class="form-control me-2">
+                    <button type="submit" name="empSearchBTN" class="btn btn-danger"><i class="bi bi-search"></i></button>
+                </form>
             </div>
 
-        </div>
-        <div class="view-content-div">
+            <div class="d-flex justify-content-end mb-4">
+                <a href="../Operations/do_addEmployee.php" class="btn btn-danger">Add Employee</a>
+            </div>
 
-            <div class="row w-100" style="margin-left: 0px; height:500px;">
-                <div class="col col-12">
-
-                    <form action="" method="post"> 
-                        <div class="row justify-content-end align-items-center" style="height: 70px;">
-                            <div class="col col-5 mt-2 p-1" style="background-color: rgb(216, 79, 79); border-radius:50px;" >
-                               <input type="text" name="sSearch" placeholder="Search" class="form-control rounded-pill border border-dark">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white text-center">
+                    <h5>Employees List</h5>
+                </div>
+                <div class="card-body overflow-auto" style="max-height: 400px;">
+                    <?php
+                        $sql;
+                        if(isset($_POST['empSearchBTN'])){
+                            $sValue = $_POST['sSearch'];
+                            $sql = "SELECT * FROM employees WHERE eFname LIKE '%$sValue%' OR eLname LIKE '%$sValue%' OR emp_position LIKE '%$sValue%' OR eAddress LIKE '%$sValue%'";
+                        }else{
+                            $sql = "SELECT * FROM employees";
+                        }
+                        try{
+                            $do = $conn->query($sql);
+                            if($do->num_rows > 0){
+                                while($rows = $do->fetch_assoc()){
+                    ?>
+                        <div class="row border mt-2 py-2" style="background-color: rgb(216, 79, 79); color:white; border-radius: 10px;">
+                            <div class="col-8">
+                                <strong>Name:</strong> <?php echo $rows['e_Name'] ?><br>
+                                <strong>Contact #:</strong> <?php echo $rows['eContactNum'] ?><br>
+                                <strong>Position:</strong> <?php echo $rows['emp_position'] ?><br>
+                                <strong>Address:</strong> <?php echo $rows['eAddress'] ?>
                             </div>
-                            <div class="col col-1 mt-2 text-center border" style="background-color: rgb(216, 79, 79); border-radius:10px; padding-top:5px; padding-bottom:5px;">
-                                <button type="submit" name="empSearchBTN" class="btn btn-danger"><i class="bi bi-search"></i></button>
-                            </div>
-                            <div class="col col-3 text-center">
-                        
-                                <a href="../Operations/do_addEmployee.php" class="btn btn-danger">Add Employee</a>
-                        
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="row m-1" style="overflow: auto; height:430px;">
-
-                        <div class="col col-12 mt-4" >
-
-                            <?php 
-                            
-                                $sql;
-
-                                if(isset($_POST['empSearchBTN'])){
-                                    $sValue = $_POST['sSearch'];
-
-                                    $sql = "SELECT * FROM employees WHERE eFname LIKE '%$sValue%' OR
-                                                                            eLname LIKE '%$sValue%' OR
-                                                                            emp_position LIKE '%$sValue%' OR
-                                                                            eAddress LIKE '%$sValue%'";
-                                }
-                                else{
-                                    $sql = "SELECT * FROM employees";
-                                }
-
-                                try{
-                                    
-                                    $do = $conn->query($sql);
-
-                                    if($do->num_rows>0){
-                                        while($rows = $do->fetch_assoc()){
-                            
-                            ?>
-
-                                <form action="../Operations/do_editEmployee.php" method="post">
-                                    <div class="row mx-1" style="background-color: rgb(216, 79, 79); border-radius:10px;">
-                                        <div class="col col-5 py-2" style="color: white;">
-                                            <strong>Name:</strong>
-                                            <span><?php echo $rows['e_Name'] ?></span> <br>
-                                            <strong>Contact #:</strong>
-                                            <span><?php echo $rows['eContactNum'] ?></span>
-                                        </div>
-                                        <div class="col col-5 py-2" style="color: white;">
-                                            <strong>Position:</strong>
-                                            <span><?php echo $rows['emp_position'] ?></span> <br>
-                                            <strong>Address:</strong>
-                                            <span><?php echo $rows['eAddress'] ?></span>
-                                        </div>
-                                        <div class="col col-2 pt-3">
-                                            <input type="text" hidden name="empID" value="<?php echo $rows['employee_ID'] ?>">
-                                            <button class="btn btn-success" type="submit">EDIT</button>
-                                        </div>
-                                    </div>
+                            <div class="col-2">
+                                <form action="../Operations/do_editEmployee.php" method="POST">
+                                    <input type="text" name="empID" hidden value="<?php echo $rows['employee_ID'] ?>">
+                                    <button type="submit" class="btn btn-success mt-3">EDIT</button>
                                 </form>
-
-                            <?php  
-                                        }
-                                    }else{
-                                        echo "
-                                            <div class='row mt-2 py-2 justify-content-center'>
-                                                <div class='col col-5 text-center'>
-                                                <Strong>No Result</Strong>
-                                                </div>
-                                            </div>
-                                            ";
-                                    }
-
-                                }catch(\Exception $e){
-                                    die($e);
-                                }
-                            ?>
-
+                            </div>
                         </div>
-
-                    </div>
-    
+                    <?php
+                                }
+                            }else{
+                                echo "<p class='text-center text-danger'><strong>No Result</strong></p>";
+                            }
+                        }catch(\Exception $e){
+                            die($e);
+                        }
+                    ?>
                 </div>
             </div>
-
         </div>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 </body>
